@@ -8,11 +8,11 @@ public class Controller {
 
     }
 
-    public void addItem(int itemID, int quantity) {
+    public float addItem(int itemID, int quantity) {
 
     }
 
-    public void endSale() {
+    public float endSale() {
 
     }
 
