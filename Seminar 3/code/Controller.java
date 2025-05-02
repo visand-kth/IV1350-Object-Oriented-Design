@@ -7,6 +7,13 @@ public class Controller {
         // Create Controller
 
     }
+    public float startSale() {
+
+    }
+    
+    public float makePayment() {
+        
+    }
 
     public float addItem(int itemID, int quantity) {
 
