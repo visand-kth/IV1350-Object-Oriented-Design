@@ -24,7 +24,7 @@ public class Controller {
         return currentSale;
     }
     public void endSale() {
-        Payment payment = new Payment(currentSale, accountingDB, discounts,  id);
+        Payment payment = new Payment(currentSale, discounts, id);
         payment.makePayment();
         Receipt rec = new Receipt(payment.sale, payment);
         rec.print();
