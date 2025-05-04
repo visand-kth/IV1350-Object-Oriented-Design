@@ -6,8 +6,7 @@ import se.kth.src.External.AccountingDB;
 import se.kth.src.External.DiscountDB;
 
 public class Payment {
-    private float change;
-    private Sale sale;
+    public Sale sale;
     private AccountingDB accounts;
     private float discount;
     public float totalCost;
@@ -21,7 +20,6 @@ public class Payment {
      */
     public Payment(Sale sale, AccountingDB accountingDB, DiscountDB discounts, int id) {
         this.sale = sale;
-        this.change = 0;
         this.accounts = accountingDB;
         this.discount = discounts.calcDiscount(id);
     }
@@ -46,9 +44,6 @@ public class Payment {
             System.out.println("Thats not enough, try again!");
             this.cashPaid = getCash();
         }
-        this.change = this.cashPaid - this.totalCost;
         //make and print receipt
-        Receipt rec = new Receipt(this.sale, this);
-        rec.print();
     }
 }

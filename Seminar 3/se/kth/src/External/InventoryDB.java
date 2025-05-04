@@ -1,5 +1,6 @@
 package se.kth.src.External;
 import se.kth.src.Model.Item;
+import se.kth.src.Model.Sale;
 
 public class InventoryDB {
     private Item[] db;
@@ -34,14 +35,15 @@ public class InventoryDB {
         return null;
     }
     /**
-     * Function that updates the inventory database stock count for a specific Item
-     * @param itemID id of the item to remove
-     * @param count quantity of item to remove
+     * Function that updates the inventory database stock count from a sale object
+     * @param sale Sale object that contains the items and their quantities to be updated
      */
-    public void updateInventory(int itemID, int count) {
-        int index = getIndex(itemID);
-        if(index == -1) System.out.println("Tried to remove an item that doesnt exist in db");
-        this.stock[index] -= count; 
-        if(this.stock[index] < 0) System.out.println("negative stock? (American stocks moment)");
+    public void updateInventory(Sale sale) {
+        for(int i = 0; i < sale.items.length; i++){
+            int index = getIndex(sale.items[i].id);
+            if(index == -1) System.out.println("Tried to remove an item that doesnt exist in db");
+            this.stock[index] -= sale.count[i]; 
+            if(this.stock[index] < 0) System.out.println("negative stock? (American stocks moment)");
+        }
     }
 }
