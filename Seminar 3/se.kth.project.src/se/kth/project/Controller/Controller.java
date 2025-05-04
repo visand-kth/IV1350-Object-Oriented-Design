@@ -1,11 +1,11 @@
-package se.kth.src.Controller;
+package se.kth.project.Controller;
 
-import se.kth.src.Model.Payment;
-import se.kth.src.Model.Receipt;
-import se.kth.src.Model.Sale;
-import se.kth.src.External.AccountingDB;
-import se.kth.src.External.InventoryDB;
-import se.kth.src.External.DiscountDB;
+import se.kth.project.Model.Payment;
+import se.kth.project.Model.Receipt;
+import se.kth.project.Model.Sale;
+import se.kth.project.External.AccountingDB;
+import se.kth.project.External.InventoryDB;
+import se.kth.project.External.DiscountDB;
 
 public class Controller {
 

@@ -1,4 +1,4 @@
-package se.kth.src.Model;
+package se.kth.project.Model;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

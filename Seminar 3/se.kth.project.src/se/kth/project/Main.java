@@ -1,9 +1,9 @@
-package se.kth.src;
+package se.kth.project;
 
-import se.kth.src.Controller.Controller;
-import se.kth.src.External.AccountingDB;
-import se.kth.src.External.DiscountDB;
-import se.kth.src.External.InventoryDB;
+import se.kth.project.Controller.Controller;
+import se.kth.project.External.AccountingDB;
+import se.kth.project.External.DiscountDB;
+import se.kth.project.External.InventoryDB;
 
 public class Main {
     public static void main(String[] args) {

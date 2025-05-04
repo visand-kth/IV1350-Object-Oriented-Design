@@ -1,6 +1,6 @@
-package se.kth.src.Model;
+package se.kth.project.Model;
 
-import se.kth.src.External.InventoryDB;
+import se.kth.project.External.InventoryDB;
 
 public class Sale {
     public float runningTotal;

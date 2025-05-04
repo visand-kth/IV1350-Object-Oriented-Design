@@ -1,9 +1,9 @@
-package se.kth.src;
+package se.kth.project;
 
-import se.kth.src.Controller.Controller;
-import se.kth.src.Model.Sale;
-import se.kth.src.External.AccountingDB;
-import se.kth.src.External.InventoryDB;
+import se.kth.project.Controller.Controller;
+import se.kth.project.Model.Sale;
+import se.kth.project.External.AccountingDB;
+import se.kth.project.External.InventoryDB;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;

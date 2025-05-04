@@ -1,4 +1,4 @@
-package se.kth.src.View;
+package se.kth.project.View;
 public class View {
 
     public View() {

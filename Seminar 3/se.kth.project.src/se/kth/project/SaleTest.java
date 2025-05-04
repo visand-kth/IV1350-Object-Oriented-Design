@@ -1,14 +1,12 @@
-package se.kth.src;
+package se.kth.project;
 
-import se.kth.src.Controller;
-import se.kth.src.Model.Sale;
-import se.kth.src.External.AccountingDB;
-import se.kth.src.External.InventoryDB;
+import se.kth.project.Controller.Controller;
+import se.kth.project.Model.Sale;
 
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class ReceiptTest(){
+public class SaleTest{
 
     private Controller controller;
     private Sale sale;
@@ -25,7 +23,7 @@ public class ReceiptTest(){
     }
 
     @Test
-    void startTest(){
+    void startSaleTest(){
 
         assertTrue(sale != null);
         

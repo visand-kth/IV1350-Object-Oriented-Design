@@ -1,6 +1,6 @@
-package se.kth.src.External;
-import se.kth.src.Model.Item;
-import se.kth.src.Model.Sale;
+package se.kth.project.External;
+import se.kth.project.Model.Item;
+import se.kth.project.Model.Sale;
 
 public class InventoryDB {
     private Item[] db;

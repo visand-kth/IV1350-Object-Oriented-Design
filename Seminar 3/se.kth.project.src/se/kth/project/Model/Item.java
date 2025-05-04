@@ -1,4 +1,4 @@
-package se.kth.src.Model;
+package se.kth.project.Model;
 
 public class Item {
     public float price;

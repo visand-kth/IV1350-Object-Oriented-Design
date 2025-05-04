@@ -1,5 +1,5 @@
-package se.kth.src.External;
-import se.kth.src.Model.Receipt;
+package se.kth.project.External;
+import se.kth.project.Model.Receipt;
 
 /**
  * Class that represents the accounting database, it is assumed that this is a class that is used to save the sales made by the customers and to get the receipts of a specific customer

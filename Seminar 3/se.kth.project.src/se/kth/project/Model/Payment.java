@@ -1,8 +1,8 @@
-package se.kth.src.Model;
+package se.kth.project.Model;
 
 import java.util.Scanner;
 
-import se.kth.src.External.DiscountDB;
+import se.kth.project.External.DiscountDB;
 
 public class Payment {
     public Sale sale;
