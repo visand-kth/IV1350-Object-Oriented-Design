@@ -40,10 +40,27 @@ public class InventoryDB {
      */
     public void updateInventory(Sale sale) {
         for(int i = 0; i < sale.items.length; i++){
+            if(sale.items[i] == null) break; // End of sale items
             int index = getIndex(sale.items[i].id);
             if(index == -1) System.out.println("Tried to remove an item that doesnt exist in db");
             this.stock[index] -= sale.count[i]; 
             if(this.stock[index] < 0) System.out.println("negative stock? (American stocks moment)");
         }
+    }
+
+    /**
+     * Function that adds an item to the inventory database
+     * @param item Item object to be added
+     * @param quantity Quantity of the item to be added
+     */
+    public void addItem(Item item, int quantity) {
+        for(int i = 0; i < db.length; i++){
+            if(this.db[i] == null){
+                db[i] = item;
+                stock[i] = quantity;
+                return;
+            }
+        }
+        System.out.println("Inventory is full, cannot add more items.");
     }
 }

@@ -19,7 +19,7 @@ public class Receipt {
         // Print each unique item and its count
         for (int i = 0; i < sale.items.length; i++) {
             
-            if(sale.items[i].equals(null)) {
+            if(sale.items[i] == null) {
                 break;
             }
             Item item = sale.items[i];

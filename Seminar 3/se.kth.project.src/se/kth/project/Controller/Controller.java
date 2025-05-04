@@ -14,8 +14,9 @@ public class Controller {
     private DiscountDB discounts;
     private InventoryDB inv;
     private int id;
-    public Controller(AccountingDB accountingDB, InventoryDB inv) {
+    public Controller(AccountingDB accountingDB, DiscountDB discount, InventoryDB inv) {
         this.accountingDB = accountingDB;
+        this.discounts = discount;
         this.inv = inv;
     }
     public Sale startSale() {

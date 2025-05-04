@@ -18,11 +18,12 @@ public class ReceiptTest{
 
         AccountingDB accountingDB = new AccountingDB();
         InventoryDB inventoryDB = new InventoryDB();
-        controller = new Controller(accountingDB, inventoryDB);
+        DiscountDB discountDB = new DiscountDB();
+        controller = new Controller(accountingDB, discountDB, inventoryDB);
 
         sale = controller.startSale();
         receipt = new Receipt(sale, new Payment(sale, new DiscountDB(), 0));
-
+        
         sale.addItem(0,1);
         sale.addItem(1,2);
         receipt.print();

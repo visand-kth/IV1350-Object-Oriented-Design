@@ -5,66 +5,47 @@ import se.kth.project.External.InventoryDB;
 public class Sale {
     public float runningTotal;
     public Item[] items;
-    public int[] count; //an array defining count of each item in items
+    public int[] count; // Array defining count of each item in items
     private int uniqueItemQuantity;
     private int arraySize;
     private InventoryDB inv;
+
     public Sale(InventoryDB inv) {
-        this.arraySize = 10;
-        this.items = new Item[arraySize]; // Initialize the array with a size of arraySize
-        this.count = new int[arraySize];
-        this.runningTotal = 0; //initialised to 0
-        this.uniqueItemQuantity = 0; 
         this.inv = inv;
-        // Create Sale
+        this.items = new Item[10];
+        this.count = new int[10];
+        this.uniqueItemQuantity = 0;
+        this.arraySize = 10;
     }
-    /**
-     * This function extends the items array and count array to be bigger
-     */
-    private void extendItems(){
-        Item[] newItems = new Item[arraySize*=2];
-        int[] newCount = new int[arraySize];
-        for(int i = 0; i < uniqueItemQuantity; i++){
-            newItems[i] = this.items[i];
-            newCount[i] = this.count[i];
-        }
+
+    private void extendItems() {
+        Item[] newItems = new Item[this.arraySize + 10];
+        int[] newCount = new int[this.arraySize + 10];
+        System.arraycopy(this.items, 0, newItems, 0, this.arraySize);
+        System.arraycopy(this.count, 0, newCount, 0, this.arraySize);
         this.items = newItems;
         this.count = newCount;
+        this.arraySize += 10;
     }
-    /**
-     * function gets index of the item in the current sale, will return -1 if not found
-     * @param item - Item which it needs to find the index of
-     */
-    private int getIndex(Item item){
-        for(int i = 0; i < arraySize; i++){
-            if(this.items[i].equals(item)) return i;
+
+    public boolean addItem(int item, int quantity) {
+        if (inv.fetchItem(item) == null) {
+            return false; // Item not found in inventory
         }
-        //if none of the items match it then return -1
-        return -1;
-    }
-    /**
-     * adds item to the sale given an itemID and quantity
-     * @param itemID id of the item
-     * @param quantity quantity to add to the sale
-     */
-    public boolean addItem(int itemID, int quantity) {
-        Item newItem = inv.fetchItem(itemID);
-        //if couldnt find item it will return null
-        if(newItem.equals(null)) return false;
-        //if item already exists add quantity
-        int index;
-        if((index = getIndex(newItem)) != -1){
-            this.count[index] += quantity;
-            this.runningTotal += quantity * newItem.price;
-            return true;
+        for(int i = 0; i < uniqueItemQuantity; i++) {
+            if(this.items[i].id == item) {
+                this.count[i] += quantity; // Update existing item count
+                this.runningTotal += this.items[i].price * quantity;
+                return true;
+            }
         }
-        // if array is full
-        if(uniqueItemQuantity - 1 == arraySize){
+        if (uniqueItemQuantity >= arraySize) {
             extendItems();
         }
-        this.items[uniqueItemQuantity] = newItem;
-        this.count[uniqueItemQuantity++] = quantity;
-        this.runningTotal += quantity*newItem.price;
+        this.items[uniqueItemQuantity] = inv.fetchItem(item);
+        this.count[uniqueItemQuantity] = quantity;
+        uniqueItemQuantity++;
+        this.runningTotal += this.items[uniqueItemQuantity - 1].price * quantity;
         return true;
     }
 }
