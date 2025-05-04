@@ -9,19 +9,19 @@ import se.kth.src.External.DiscountDB;
 
 public class Controller {
 
-    Sale currentSale;
-    AccountingDB accountingDB;
-    DiscountDB discounts;
-    InventoryDB inv;
-    int id;
+    public Sale currentSale;
+    private AccountingDB accountingDB;
+    private DiscountDB discounts;
+    private InventoryDB inv;
+    private int id;
     public Controller(AccountingDB accountingDB, InventoryDB inv) {
         this.accountingDB = accountingDB;
         this.inv = inv;
     }
-    public void startSale() {
+    public Sale startSale() {
         // Create Sale object
-        currentSale = new Sale(inv);
-        
+        this.currentSale = new Sale(inv);
+        return currentSale;
     }
     public void endSale() {
         Payment payment = new Payment(currentSale, accountingDB, discounts,  id);

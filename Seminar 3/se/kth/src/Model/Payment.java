@@ -2,12 +2,10 @@ package se.kth.src.Model;
 
 import java.util.Scanner;
 
-import se.kth.src.External.AccountingDB;
 import se.kth.src.External.DiscountDB;
 
 public class Payment {
     public Sale sale;
-    private AccountingDB accounts;
     private float discount;
     public float totalCost;
     public float cashPaid;
@@ -18,9 +16,8 @@ public class Payment {
      * @param discounts discount database to see if person has a discount
      * @param id id of the person
      */
-    public Payment(Sale sale, AccountingDB accountingDB, DiscountDB discounts, int id) {
+    public Payment(Sale sale, DiscountDB discounts, int id) {
         this.sale = sale;
-        this.accounts = accountingDB;
         this.discount = discounts.calcDiscount(id);
     }
 

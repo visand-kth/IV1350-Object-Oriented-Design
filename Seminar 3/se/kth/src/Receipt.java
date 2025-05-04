@@ -1,0 +1,34 @@
+package se.kth.src;
+
+import se.kth.src.Controller;
+import se.kth.src.Model.Sale;
+import se.kth.src.External.AccountingDB;
+import se.kth.src.External.InventoryDB;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
+
+public class ReceiptTest(){
+
+    private Controller controller;
+    private Sale sale;
+
+    @BeforeEach
+    void setUp() {
+
+        AccountingDB accountingDB = new AccountingDB();
+        InventoryDB inventoryDB = new InventoryDB();
+        controller = new Controller(accountingDB, inventoryDB);
+
+        sale = controller.startSale();
+
+    }
+
+    @Test
+    void startTest(){
+
+        assertTrue(sale != null);
+        
+    }
+
+}
