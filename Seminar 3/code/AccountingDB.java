@@ -1,9 +1,8 @@
 public class AccountingDB {
-
+    private int[] ids;
+    private Receipt[][] receipts; 
     public AccountingDB() {
-
-        // Create AccountingDB
-
+        
     }
 
     public void saveSale() {
