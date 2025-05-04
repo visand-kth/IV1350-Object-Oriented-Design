@@ -1,3 +1,7 @@
+package se.kth.src.Controller;
+
+import se.kth.src.Model.Sale;
+
 public class Controller {
 
     Sale currentSale;

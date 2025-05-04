@@ -1,3 +1,5 @@
+package se.kth.src.Model;
+
 public class Item {
     public float price;
     public int id;

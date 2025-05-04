@@ -1,3 +1,7 @@
+package se.kth.src.Model;
+
+import se.kth.src.External.InventoryDB;
+
 public class Sale {
     public float runningTotal;
     public Item[] items;

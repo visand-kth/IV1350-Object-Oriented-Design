@@ -1,3 +1,5 @@
+package se.kth.src.Model;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

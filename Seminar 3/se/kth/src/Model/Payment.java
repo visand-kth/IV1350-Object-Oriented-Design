@@ -1,4 +1,9 @@
+package se.kth.src.Model;
+
 import java.util.Scanner;
+
+import se.kth.src.External.AccountingDB;
+import se.kth.src.External.DiscountDB;
 
 public class Payment {
     private float change;

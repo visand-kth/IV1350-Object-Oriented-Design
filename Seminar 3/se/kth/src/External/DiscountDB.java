@@ -1,3 +1,4 @@
+package se.kth.src.External;
 public class DiscountDB {
     private int[] ids;
     private float[] discounts;

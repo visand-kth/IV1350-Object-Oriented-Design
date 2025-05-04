@@ -1,3 +1,6 @@
+package se.kth.src.External;
+import se.kth.src.Model.Item;
+
 public class InventoryDB {
     private Item[] db;
     private int[] stock;
