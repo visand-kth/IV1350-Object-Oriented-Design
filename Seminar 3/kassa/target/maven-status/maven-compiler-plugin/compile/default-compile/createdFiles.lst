@@ -1,0 +1,10 @@
+se\kth\iv1350\model\Payment.class
+se\kth\iv1350\view\View.class
+se\kth\iv1350\model\Receipt.class
+se\kth\iv1350\integration\AccountingDB.class
+se\kth\iv1350\controller\Controller.class
+se\kth\iv1350\model\Sale.class
+se\kth\iv1350\startup\Main.class
+se\kth\iv1350\integration\DiscountDB.class
+se\kth\iv1350\integration\InventoryDB.class
+se\kth\iv1350\model\Item.class
