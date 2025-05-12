@@ -3,6 +3,7 @@ package se.kth.iv1350.controller;
 import se.kth.iv1350.integration.AccountingDB;
 import se.kth.iv1350.integration.DiscountDB;
 import se.kth.iv1350.integration.InventoryDB;
+import se.kth.iv1350.model.Item;
 import se.kth.iv1350.model.Sale;
 
 /**
@@ -30,9 +31,44 @@ public class Controller {
 
     }
 
+    /**
+     * Starts a new sale by creating a @link Sale
+     */
     public void startSale() {
 
         sale = new Sale();
+
+    }
+
+    /**
+     * Adds item to the current @link Sale
+     * 
+     * @param item The item to be added
+     */
+    public void addItem(Item item) {
+
+        sale.addItem(item);
+
+    }
+
+    /**
+     * Getter for the variable sale
+     * 
+     * @return Returns the value of sale
+     */
+    public Sale getSale() {
+
+        return sale;
+
+    }
+
+    /**
+     * Terminates the sale and prints the receipt
+     */
+    public void endSale(){
+
+        System.out.println("End sale:");
+        sale = null;
 
     }
 
