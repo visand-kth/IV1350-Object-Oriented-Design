@@ -1,54 +1,35 @@
 package se.kth.iv1350.model;
 
+import se.kth.iv1350.DTO.ItemDTO;
+
 /**
  * Handles the items from the @link InventoryDB
  */
 public class Item {
 
-    private int id;
+    private ItemDTO itemDTO;
     private int amount;
-    private String name;
-    private float price;
-    private float vat;
-    private String description;
 
     /**
      * Constructor for @link Item
      * 
      * @param price The cost of the @link Item
      */
-    public Item(int id, int amount, String name, float price, float vat, String description) {
+    public Item(ItemDTO itemDTO, int amount) {
 
-        this.id = id;
+        this.itemDTO = itemDTO;
         this.amount = amount;
-        this.name = name;
-        this.price = price;
-        this.vat = vat;
-        this.description = description;
 
     }
 
     /**
-     * Prints the item and its values
-     */
-    public void print() {
-
-        System.out.println(String.format("Item ID: %d", id));
-        System.out.println(String.format("Item name: %s", name));
-        System.out.println(String.format("Item cost: %.2f SEK", getTotalPrice()));
-        System.out.println(String.format("Item VAT: %.2f%%", vat * 100));
-        System.out.println(String.format("Item description: %s", description));
-
-    }
-
-    /**
-     * Getter for the variable id
+     * Getter for the variable itemDTO
      * 
-     * @return Returns the value of id
+     * @return Returns the value of itemDTO
      */
-    public int getID() {
+    public ItemDTO getItemDTO() {
 
-        return id;
+        return itemDTO;
 
     }
 
@@ -60,72 +41,6 @@ public class Item {
     public int getAmount() {
 
         return amount;
-
-    }
-
-    /**
-     * Getter for the variable name
-     * 
-     * @return Returns the value of name
-     */
-    public String getName() {
-
-        return name;
-
-    }
-
-    /**
-     * Getter for the variable price
-     * 
-     * @return Returns the value of price
-     */
-    public float getPrice() {
-
-        return price;
-
-    }
-
-    /**
-     * Calculates total price with VAT in consideration
-     * 
-     * @return Returns the total price
-     */
-    public float getTotalPrice() {
-
-        return price + getVATPrice();
-
-    }
-
-    /**
-     * Getter for the variable vat
-     * 
-     * @return Returns the value of vat
-     */
-    public float getVAT() {
-
-        return vat;
-
-    }
-
-    /**
-     * Calculates VAT based of price
-     * 
-     * @return Returns the cost of VAT
-     */
-    public float getVATPrice() {
-
-        return price * vat;
-
-    }
-
-    /**
-     * Getter for the variable description
-     * 
-     * @return Returns the value of description
-     */
-    public String getDescription() {
-
-        return description;
 
     }
 

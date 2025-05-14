@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="se.kth.iv1350.startup.MainTest" time="0.012" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="se.kth.iv1350.model.SaleTest" time="0.032" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -59,5 +59,70 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="testMain" classname="se.kth.iv1350.startup.MainTest" time="0.01"/>
+  <testcase name="testAddItem" classname="se.kth.iv1350.model.SaleTest" time="0.005">
+    <system-out><![CDATA[Item ID: 100
+Item name: TESTER
+Item cost: 11,00 SEK
+Item VAT: 10,00%
+Item description: TEST ITEM
+
+Total cost (incl VAT): 11,00 SEK
+Total VAT: 1,10 SEK
+
+]]></system-out>
+  </testcase>
+  <testcase name="testCheckDuplicate" classname="se.kth.iv1350.model.SaleTest" time="0.005">
+    <system-out><![CDATA[Item ID: 102
+Item name: YouGoGo Blueberry
+Item cost: 15,79 SEK
+Item VAT: 6,00%
+Item description: YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour.
+
+Total cost (incl VAT): 15,79 SEK
+Total VAT: 0,95 SEK
+
+Item ID: 101
+Item name: BigWheel Oatmeal
+Item cost: 31,69 SEK
+Item VAT: 6,00%
+Item description: BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free
+
+Total cost (incl VAT): 47,49 SEK
+Total VAT: 2,85 SEK
+
+]]></system-out>
+  </testcase>
+  <testcase name="testAddDuplicateItem" classname="se.kth.iv1350.model.SaleTest" time="0.003">
+    <system-out><![CDATA[Item ID: 102
+Item name: YouGoGo Blueberry
+Item cost: 15,79 SEK
+Item VAT: 6,00%
+Item description: YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour.
+
+Total cost (incl VAT): 15,79 SEK
+Total VAT: 0,95 SEK
+
+]]></system-out>
+  </testcase>
+  <testcase name="testCalculateTotal" classname="se.kth.iv1350.model.SaleTest" time="0.004">
+    <system-out><![CDATA[Item ID: 102
+Item name: YouGoGo Blueberry
+Item cost: 15,79 SEK
+Item VAT: 6,00%
+Item description: YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour.
+
+Total cost (incl VAT): 15,79 SEK
+Total VAT: 0,95 SEK
+
+Item ID: 102
+Item name: YouGoGo Blueberry
+Item cost: 15,79 SEK
+Item VAT: 6,00%
+Item description: YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour.
+
+Total cost (incl VAT): 15,79 SEK
+Total VAT: 0,95 SEK
+
+]]></system-out>
+  </testcase>
 </testsuite>

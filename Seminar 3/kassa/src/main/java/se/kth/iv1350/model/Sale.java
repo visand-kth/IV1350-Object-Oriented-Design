@@ -50,8 +50,7 @@ public class Sale {
         Item existingItem = items.get(index);
         int currentAmount = existingItem.getAmount();
         int newAmount = currentAmount + item.getAmount();
-        Item newItem = new Item(existingItem.getID(), newAmount, existingItem.getName(), existingItem.getPrice(),
-                existingItem.getVAT(), existingItem.getDescription());
+        Item newItem = new Item(existingItem.getItemDTO(), newAmount);
         items.set(index, newItem);
 
     }
@@ -66,9 +65,9 @@ public class Sale {
 
         for (Item item : items) {
 
-            float itemPrice = item.getPrice();
+            float itemPrice = item.getItemDTO().getTotalPrice();
             totalPrice += itemPrice;
-            totalVAT += itemPrice * item.getVAT();
+            totalVAT += itemPrice * item.getItemDTO().getVAT();
 
         }
 
@@ -85,8 +84,8 @@ public class Sale {
         for (int i = 0; i < items.size(); i++) {
 
             Item saleItem = items.get(i);
-            int saleItemID = saleItem.getID();
-            int newItemID = newItem.getID();
+            int saleItemID = saleItem.getItemDTO().getID();
+            int newItemID = newItem.getItemDTO().getID();
 
             if (saleItemID == newItemID)
                 return i;
@@ -115,6 +114,26 @@ public class Sale {
     public float getTotalPrice() {
 
         return totalPrice;
+
+    }
+
+    /**
+     * Searches for the itemID in the current sale
+     * 
+     * @param ID The ID to search for in this particular sale
+     * @return Returns the @link Item that exists in the current sale, returns null
+     *         if item does not exist
+     */
+    public Item findItem(int ID) {
+
+        for (Item item : items) {
+
+            if (item.getItemDTO().getID() == ID)
+                return item;
+
+        }
+
+        return null;
 
     }
 
