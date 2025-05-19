@@ -15,7 +15,6 @@ import se.kth.iv1350.integration.Printer;
  * Controlling the interactions
  */
 public class Controller {
-
     private AccountingDB accountingDB;
     private DiscountDB discountDB;
     private InventoryDB inventoryDB;
@@ -54,8 +53,17 @@ public class Controller {
      * @param item The item to be added
      */
     public void addItem(Item item) {
-
-        sale.addItem(item);
+        try {
+            if (item == null) {
+                throw new IllegalArgumentException("Cannot add null item to sale.");
+            }
+            if (item.getItemDTO() == null) {
+                throw new IllegalArgumentException("Cannot add item with null ItemDTO.");
+            }
+            sale.addItem(item);
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
 
     }
 
