@@ -28,8 +28,6 @@ public class Sale {
      * @param item The item to be added
      */
     public void addItem(Item item) {
-
-        item.print();
         System.out.println();
 
         int potentialDuplicate = checkDuplicate(item);
@@ -38,10 +36,8 @@ public class Sale {
             items.add(item);
         else
             addToExisting(potentialDuplicate, item);
-
+        
         calculateTotal();
-        printTotal();
-        System.out.println();
 
     }
 
@@ -97,16 +93,6 @@ public class Sale {
     }
 
     /**
-     * Prints the total cost and vat of the current sale
-     */
-    public void printTotal() {
-
-        System.out.println(String.format("Total cost (incl VAT): %.2f SEK", totalPrice));
-        System.out.println(String.format("Total VAT: %.2f SEK", totalVAT));
-
-    }
-
-    /**
      * Getter for the variable totalPrice
      * 
      * @return Returns the value of totalPrice
@@ -137,4 +123,14 @@ public class Sale {
 
     }
 
+    public List<Item> getItems() { return items; }
+    public float getTotalVAT() { return totalVAT; }
+
+    /**
+     * Creates a receipt for this sale.
+     * @return A new Receipt object representing this sale.
+     */
+    public Receipt createReceipt() {
+        return new Receipt(this);
+    }
 }

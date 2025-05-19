@@ -4,7 +4,10 @@ import se.kth.iv1350.integration.AccountingDB;
 import se.kth.iv1350.integration.DiscountDB;
 import se.kth.iv1350.integration.InventoryDB;
 import se.kth.iv1350.model.Item;
+import se.kth.iv1350.DTO.ItemDTO;
 import se.kth.iv1350.model.Sale;
+import se.kth.iv1350.model.Receipt;
+import se.kth.iv1350.integration.Printer;
 
 /**
  * Controlling the interactions
@@ -15,6 +18,7 @@ public class Controller {
     private DiscountDB discountDB;
     private InventoryDB inventoryDB;
     private Sale sale;
+    private Printer printer; 
 
     /**
      * Constructor for @link Controller
@@ -28,6 +32,8 @@ public class Controller {
         System.out.println("discountDB: " + discountDB);
         inventoryDB = new InventoryDB();
         System.out.println("inventoryDB: " + inventoryDB);
+        printer = new Printer();
+        System.out.println("Printer: " + printer);
 
     }
 
@@ -63,13 +69,21 @@ public class Controller {
     }
 
     /**
-     * Terminates the sale and prints the receipt
+     * Terminates the sale, prints the receipt, updates accounting and inventory.
      */
-    public void endSale(){
+    public void endSale(int personId) {
+        Receipt receipt = sale.createReceipt();
+        printer.print(receipt);
+        if(personId != 0) {
+            receipt.setDiscount(discountDB.getDiscount(personId));
+        }
+        accountingDB.storeReceipt(personId, receipt);
+        for (Item item : sale.getItems()) {
+            ItemDTO itemDTO = item.getItemDTO();
+            inventoryDB.updateItem(itemDTO, item.getAmount());
+        }
 
-        System.out.println("End sale:");
         sale = null;
-
     }
 
 }

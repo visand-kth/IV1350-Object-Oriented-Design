@@ -63,15 +63,4 @@ public class Item {
         return itemDTO;
     }
 
-    /**
-     * Prints the item to the console
-     */
-    public void print() {
-
-        System.out.println("Item: " + itemDTO.getName() + "\n" +
-                "Price: " + itemDTO.getPrice() + "\n" +
-                "Amount: " + amount + "\n" +
-                "Total price: " + itemDTO.getTotalPrice() + "\n");
-    }
-
 }

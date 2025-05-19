@@ -36,6 +36,7 @@ public class SaleTest {
                 "YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour.");
         Item newItem = new Item(itemDTO, 1);
         sale.addItem(newItem);
+        sale.addItem(newItem);
         Item foundItem = sale.findItem(102);
         assertTrue(foundItem != null, "Could not find added duplicate item");
     }
@@ -66,6 +67,15 @@ public class SaleTest {
         int duplicate = sale.checkDuplicate(newItem);
         int expected = 1;
         assertTrue(duplicate == expected, "Duplicate was not found");
+    }
+
+    @Test
+    public void testFindNonExistentItem_shouldFail() {
+        ItemDTO itemDTO = new ItemDTO(200, "NonExistentTest", 20F, 0.2F, "Non-existent item description");
+        Item newItem = new Item(itemDTO, 1);
+        sale.addItem(newItem);
+        Item foundItem = sale.findItem(999); // 999 does not exist
+        assertTrue(foundItem != null, "This test should fail: Item with ID 999 should not be found, but test expects it.");
     }
 
 }
