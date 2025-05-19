@@ -17,9 +17,8 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        System.out.println("Starting program...");
-        System.out.println("Started controller: " + new Controller());
-        System.out.println("Started view: " + new View());
+        Controller controller = new Controller();
+        new View(controller);
 
     }
 

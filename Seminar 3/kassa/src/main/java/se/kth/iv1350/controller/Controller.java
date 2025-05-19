@@ -1,9 +1,11 @@
 package se.kth.iv1350.controller;
 
+import se.kth.iv1350.DTO.ItemDTO;
 import se.kth.iv1350.integration.AccountingDB;
 import se.kth.iv1350.integration.DiscountDB;
 import se.kth.iv1350.integration.InventoryDB;
 import se.kth.iv1350.model.Item;
+import se.kth.iv1350.model.Receipt;
 import se.kth.iv1350.model.Sale;
 
 /**
@@ -21,13 +23,9 @@ public class Controller {
      */
     public Controller() {
 
-        System.out.println("Starting controller...");
         accountingDB = new AccountingDB();
-        System.out.println("accountingDB: " + accountingDB);
         discountDB = new DiscountDB();
-        System.out.println("discountDB: " + discountDB);
         inventoryDB = new InventoryDB();
-        System.out.println("inventoryDB: " + inventoryDB);
 
     }
 
@@ -45,9 +43,15 @@ public class Controller {
      * 
      * @param item The item to be added
      */
-    public void addItem(Item item) {
+    public void addItem(int itemID, int quantity) {
 
-        sale.addItem(item);
+        try {
+            ItemDTO itemDTO = inventoryDB.getItemDTO(itemID);
+            Item item = new Item(itemDTO, quantity);
+            sale.addItem(item);
+        } catch (Exception e) {
+            // TODO throw error
+        }
 
     }
 
@@ -63,12 +67,38 @@ public class Controller {
     }
 
     /**
-     * Terminates the sale and prints the receipt
+     * Enters amount paid and prints the receipt
+     * 
+     * @param amount The amount paid
      */
-    public void endSale(){
+    public void enterPayment(float amount) {
 
-        System.out.println("End sale:");
+        sale.enterPayment(amount);
+        Receipt receipt = new Receipt(sale);
+        receipt.print();
         sale = null;
+
+    }
+
+    /**
+     * Terminates the sale and shows total price
+     */
+    public void endSale() {
+
+        System.out.println(String.format("\nTotal: \t\t\t\t\t%.2f SEK", sale.getTotalPrice()));
+        System.out.println(String.format("VAT: %.2f", sale.getTotalVAT()));
+
+    }
+
+    public void requestDiscount(int userID){
+
+        float discount = discountDB.checkTotalDiscount(userID, sale);
+
+        if(discount == 0)
+        return;
+
+        sale.setDiscount(discount);
+        System.out.println(String.format("\nCustomer %d is eligible for discount: -%.2f SEK\n", userID, discount));
 
     }
 
