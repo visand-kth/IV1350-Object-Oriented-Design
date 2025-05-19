@@ -32,7 +32,7 @@ public class ControllerTest {
 
     @Test
     public void testEndSale() {
-        controller.endSale();
+        controller.endSale(2); // Assuming 2 is the persons id
         assertTrue(controller.getSale() == null, "Sale did not end properly");
     }
 

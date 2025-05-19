@@ -29,7 +29,7 @@ public class InventoryDB {
      * @param id The item ID.
      * @return The ItemDTO if found, otherwise null.
      */
-    public ItemDTO findItemById(int id) {
+    public ItemDTO findItem(int id) {
         return items.get(id);
     }
 

@@ -123,8 +123,22 @@ public class Sale {
 
     }
 
-    public List<Item> getItems() { return items; }
-    public float getTotalVAT() { return totalVAT; }
+    /**
+     * Getter for the variable items
+     * @return Returns the items in a list of type Item
+     */
+    public List<Item> getItems() {
+        return items;
+    }
+    
+    /**
+     * Getter for the variable totalVAT
+     * 
+     * @return Returns the value of totalVAT
+     */
+    public float getTotalVAT() {
+        return totalVAT;
+    }
 
     /**
      * Creates a receipt for this sale.
