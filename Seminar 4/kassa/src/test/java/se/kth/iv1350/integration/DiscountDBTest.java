@@ -31,4 +31,16 @@ public class DiscountDBTest {
 
     }
 
+    @Test
+    public void testAddDiscountException(){
+
+        try{
+            discountDB.checkCustomerDiscount(0);
+            fail("Exception was not thrown");
+        } catch (Exception e){
+            assertTrue(true, "Exception thrown when tested for discount");
+        }
+
+    }
+
 }

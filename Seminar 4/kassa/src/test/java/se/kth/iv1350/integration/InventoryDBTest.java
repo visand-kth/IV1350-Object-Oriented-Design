@@ -33,4 +33,16 @@ public class InventoryDBTest {
 
     }
 
+    @Test
+    public void testGetItemDTOException(){
+
+        try{
+            inventoryDB.getItemDTO(1);
+            fail("Exception not thrown");
+        } catch (Exception e){
+            assertTrue(true, "Exception thrown in test");
+        }
+
+    }
+
 }
