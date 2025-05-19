@@ -32,6 +32,9 @@ public class Sale {
      */
     public void addItem(Item item) {
 
+        if(item == null)
+            return;
+
         int potentialDuplicate = checkDuplicate(item);
 
         if (potentialDuplicate < 0)

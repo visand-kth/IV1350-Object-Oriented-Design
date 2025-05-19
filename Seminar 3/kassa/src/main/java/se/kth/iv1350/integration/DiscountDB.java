@@ -49,12 +49,15 @@ public class DiscountDB {
      * @return Returns the discount for the specific customer if such discount
      *         exists
      */
-    private float checkCustomerDiscount(int userID) {
+    public float checkCustomerDiscount(int userID) throws InvalidCustomerIDException, NoConnectionException {
+
+        if(userID == 0)
+            throw new NoConnectionException("No connection to the discountDB");
 
         if (discounts.containsKey(userID))
             return discounts.get(userID);
 
-        return 0;
+        throw new InvalidCustomerIDException("Customer ID was not found: " + userID);
 
     }
 
@@ -92,7 +95,12 @@ public class DiscountDB {
         float price = 1;
 
         price *= 1 - checkPriceDiscount(sale);
-        price *= 1 - checkCustomerDiscount(userID);
+
+        try{
+            price *= 1 - checkCustomerDiscount(userID);
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+        }
 
         return sale.getTotalPrice() * (1 - price);
 

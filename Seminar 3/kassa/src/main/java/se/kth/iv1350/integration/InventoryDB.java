@@ -27,7 +27,7 @@ public class InventoryDB {
      * @param itemID Used for the item search
      * @return Returns the @link ItemDTO that corresponds to the itemID
      */
-    public ItemDTO getItemDTO(int itemID){
+    public ItemDTO getItemDTO(int itemID) throws InvalidItemIDException, NoConnectionException{
 
         for(ItemDTO itemDTO : itemDTOList){
 
@@ -36,17 +36,14 @@ public class InventoryDB {
 
         }
 
-        // TODO throw error: "ItemDTO was not found"
+        if(itemID == 0)
+            throw new NoConnectionException("No connection to the inventoryDB");
 
-        return null;
+        throw new InvalidItemIDException("ItemDTO was not found with the provided itemID: " + itemID);
 
     }
 
-    /**
-     * Add an itemDTO to the inventory
-     * @param itemDTO Which itemDTO to add to the inventory
-     */
-    public void addItemDTO(ItemDTO itemDTO){
+    private void addItemDTO(ItemDTO itemDTO){
 
         itemDTOList.add(itemDTO);
 

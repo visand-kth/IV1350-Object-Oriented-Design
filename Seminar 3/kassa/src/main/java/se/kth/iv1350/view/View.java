@@ -2,6 +2,7 @@ package se.kth.iv1350.view;
 
 import se.kth.iv1350.DTO.ItemDTO;
 import se.kth.iv1350.controller.Controller;
+import se.kth.iv1350.model.Item;
 
 /**
  * Handles the user input to the program
@@ -23,7 +24,7 @@ public class View {
     /**
      * Simulates an user using the program
      */
-    public void runUserSimulation(){
+    private void runUserSimulation(){
 
         startSale();
         addItem(101, 1);
@@ -42,6 +43,28 @@ public class View {
         endSale();
         enterPayment(1000);
 
+        startSale();
+        addItem(101, 1);
+        addItem(101, 3);
+        addItem(102, 5);
+        addItem(101, 7);
+        addItem(101, 9);
+        requestDiscount(212);
+        endSale();
+        enterPayment(1000);
+
+        startSale();
+        addItem(0, 1);
+        endSale();
+        requestDiscount(201);
+        enterPayment(100);
+
+        startSale();
+        addItem(101, 1);
+        endSale();
+        requestDiscount(0);
+        enterPayment(100);
+
     }
 
     private void addItem(int itemID, int amount){
@@ -51,8 +74,11 @@ public class View {
         try {
             
             controller.addItem(itemID, amount);
-            ItemDTO itemDTO = controller.getSale().findItem(itemID).getItemDTO();
+            Item item = controller.getSale().findItem(itemID);
 
+            if(item == null) return;
+            
+            ItemDTO itemDTO = item.getItemDTO();
             System.out.println(String.format("ItemID: %d\nItem name: %s\nItem cost: %.2f SEK\nVAT: %.2f%%\nItem description: %s\n\nTotal cost (incl VAT): %.2f SEK\nTotal VAT: %.2f SEK\n\n", 
             itemDTO.getID(), itemDTO.getName(), itemDTO.getTotalPrice(), itemDTO.getVAT() * 100, itemDTO.getDescription(), controller.getSale().getTotalPrice(), controller.getSale().getTotalVAT()));
 
@@ -72,7 +98,11 @@ public class View {
 
     private void enterPayment(float payment){
 
-        controller.enterPayment(payment);
+        try{
+            controller.enterPayment(payment);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
 
     }
 
@@ -85,7 +115,11 @@ public class View {
 
     private void requestDiscount(int userID){
 
-        controller.requestDiscount(userID);
+        try{
+            controller.requestDiscount(userID);
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+        }
 
     }
     

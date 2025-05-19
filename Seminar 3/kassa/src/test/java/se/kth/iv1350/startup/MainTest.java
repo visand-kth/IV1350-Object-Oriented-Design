@@ -1,27 +1,19 @@
 package se.kth.iv1350.startup;
 
-// import static org.junit.jupiter.api.Assertions.assertTrue;
-// import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test script for the @link Main class
  */
 public class MainTest {
 
-    /* @Test
+    @Test
     public void testMain() {
 
-        try {
+        Main.main(null);
+        assertTrue(true, "Could not complete the startup");
 
-            assertTrue(true, "Could not complete the startup");
-            Main.main(null);
-
-        } catch (Exception e) {
-
-            System.out.println(e.getMessage());
-
-        }
-
-    } */
+    }
 
 }

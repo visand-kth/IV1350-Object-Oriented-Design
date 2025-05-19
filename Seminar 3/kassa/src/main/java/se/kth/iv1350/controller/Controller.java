@@ -43,15 +43,18 @@ public class Controller {
      * 
      * @param item The item to be added
      */
-    public void addItem(int itemID, int quantity) {
+    public void addItem(int itemID, int quantity) throws OperationErrorException{
+
+        Item item = null;
 
         try {
             ItemDTO itemDTO = inventoryDB.getItemDTO(itemID);
-            Item item = new Item(itemDTO, quantity);
-            sale.addItem(item);
+            item = new Item(itemDTO, quantity);
         } catch (Exception e) {
-            // TODO throw error
+            throw new OperationErrorException("Could not add item", e);
         }
+
+        sale.addItem(item);
 
     }
 
@@ -71,11 +74,21 @@ public class Controller {
      * 
      * @param amount The amount paid
      */
-    public void enterPayment(float amount) {
+    public void enterPayment(float amount) throws OperationErrorException{
 
-        sale.enterPayment(amount);
-        Receipt receipt = new Receipt(sale);
-        receipt.print();
+        try{
+            sale.enterPayment(amount);
+        } catch(Exception e){
+            throw new OperationErrorException("Could not enter payment", e);
+        }
+
+        try {
+            Receipt receipt = new Receipt(sale);
+            receipt.print();
+        } catch (Exception e) {
+            throw new OperationErrorException("Could not print receipt", e);
+        }
+
         sale = null;
 
     }
@@ -90,12 +103,17 @@ public class Controller {
 
     }
 
-    public void requestDiscount(int userID){
+    public void requestDiscount(int userID) throws OperationErrorException{
 
-        float discount = discountDB.checkTotalDiscount(userID, sale);
+        float discount = 0;
 
-        if(discount == 0)
-        return;
+        try{
+            discount = discountDB.checkTotalDiscount(userID, sale);
+        } catch(Exception e){
+            throw new OperationErrorException("Could not get discount", e);
+        }
+
+        if(discount == 0) return;
 
         sale.setDiscount(discount);
         System.out.println(String.format("\nCustomer %d is eligible for discount: -%.2f SEK\n", userID, discount));
