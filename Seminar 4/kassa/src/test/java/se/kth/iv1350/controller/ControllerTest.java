@@ -3,6 +3,7 @@ package se.kth.iv1350.controller;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import se.kth.iv1350.model.Item;
 import se.kth.iv1350.model.Sale;
@@ -19,15 +20,17 @@ public class ControllerTest {
         controller = new Controller();
         controller.startSale();
         inventoryDB = new InventoryDB();
+        try {
+            ItemDTO testItemDTO = inventoryDB.findItem(101);
+            ItemDTO testItemDTOtwo = inventoryDB.findItem(102);
+            Item testItem = new Item(testItemDTO, 2);
+            Item testItemtwo = new Item(testItemDTOtwo, 2);
 
-        ItemDTO testItemDTO = inventoryDB.findItemById(101);
-        ItemDTO testItemDTOtwo = inventoryDB.findItemById(102);
-
-        Item testItem = new Item(testItemDTO, 2);
-        Item testItemtwo = new Item(testItemDTOtwo, 2);
-
-        controller.addItem(testItem);
-        controller.addItem(testItemtwo);
+            controller.addItem(testItem);
+            controller.addItem(testItemtwo);
+        } catch (Exception e) {
+            fail("Exception caught: " + e.getMessage());
+        }
     }
 
     @Test
@@ -38,7 +41,8 @@ public class ControllerTest {
 
     @Test
     public void testAddItem() {
-        ItemDTO testDTO = inventoryDB.findItemById(101);
+        try{
+        ItemDTO testDTO = inventoryDB.findItem(101);
         Item newItem = new Item(testDTO, 1);
         controller.addItem(newItem);
 
@@ -46,11 +50,14 @@ public class ControllerTest {
         Item foundItem = sale.findItem(101);
 
         assertTrue(foundItem != null, "Could not find added item");
+        } catch (Exception e) {
+            fail("Exception caught: " + e.getMessage());
+        }
     }
 
     @Test
     public void testAddDuplicateItem() {
-        ItemDTO testDTO = inventoryDB.findItemById(102);
+        ItemDTO testDTO = inventoryDB.findItem(102);
         Item newItem = new Item(testDTO, 1);
         controller.addItem(newItem);
 
@@ -62,7 +69,7 @@ public class ControllerTest {
 
     @Test
     public void testFindInvalidItemId() {
-        ItemDTO invalidDTO = inventoryDB.findItemById(999); // 999 does not exist
+        ItemDTO invalidDTO = inventoryDB.findItem(999); // 999 does not exist
         assertTrue(invalidDTO == null, "Should return null for invalid item ID");
     }
 }

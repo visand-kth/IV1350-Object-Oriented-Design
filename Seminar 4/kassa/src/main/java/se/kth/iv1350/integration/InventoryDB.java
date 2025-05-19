@@ -27,9 +27,16 @@ public class InventoryDB {
     /**
      * Finds an item by its ID.
      * @param id The item ID.
-     * @return The ItemDTO if found, otherwise null.
+     * @return The ItemDTO if found.
+     * @throws ItemNotFoundException if the item is not found.
      */
-    public ItemDTO findItem(int id) {
+    public ItemDTO findItem(int id) throws ItemNotFoundException, DatabaseFailureException {
+        if (id == 999) {
+            throw new DatabaseFailureException("Database is not available for item ID: " + id);
+        }
+        if (!items.containsKey(id)) {
+            throw new ItemNotFoundException(id);
+        }
         return items.get(id);
     }
 

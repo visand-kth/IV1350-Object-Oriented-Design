@@ -3,6 +3,8 @@ package se.kth.iv1350.controller;
 import se.kth.iv1350.integration.AccountingDB;
 import se.kth.iv1350.integration.DiscountDB;
 import se.kth.iv1350.integration.InventoryDB;
+import se.kth.iv1350.integration.DatabaseFailureException;
+import se.kth.iv1350.integration.ItemNotFoundException;
 import se.kth.iv1350.model.Item;
 import se.kth.iv1350.DTO.ItemDTO;
 import se.kth.iv1350.model.Sale;
@@ -55,6 +57,24 @@ public class Controller {
 
         sale.addItem(item);
 
+    }
+
+    /**
+     * Adds an item to the current sale by looking it up through its ID.
+     * 
+     * @param id The ID of the item to be added
+     * @param amount The amount of the item to be added
+     */
+    public void addItemById(int id, int amount) throws ItemNotFoundException, DatabaseFailureException {
+        try {
+            ItemDTO itemDTO = inventoryDB.findItem(id);
+            Item item = new Item(itemDTO, amount);
+            sale.addItem(item);
+        } catch (ItemNotFoundException e) {
+            throw e;
+        } catch (DatabaseFailureException e) {
+            // Notify view/user and log
+        }
     }
 
     /**
