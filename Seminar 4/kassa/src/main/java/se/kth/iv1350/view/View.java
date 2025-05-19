@@ -26,6 +26,8 @@ public class View {
     public void runFakeExecution() {
         System.out.println("View: Starting a new sale...");
         try {
+            TotalRevenueView revenueView = new TotalRevenueView();
+            controller.addObserver(revenueView);
             controller.startSale();
             ItemDTO itemDTO1 = new ItemDTO(101, "BigWheel Oatmeal", 29.9F, 0.06F, "BigWheel Oatmeal 500g, whole grain oats, high fiber, gluten free");
             Item item1 = new Item(itemDTO1, 2);

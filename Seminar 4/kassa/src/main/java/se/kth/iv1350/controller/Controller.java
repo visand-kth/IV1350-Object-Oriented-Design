@@ -6,8 +6,13 @@ import se.kth.iv1350.integration.InventoryDB;
 import se.kth.iv1350.integration.DatabaseFailureException;
 import se.kth.iv1350.integration.ItemNotFoundException;
 import se.kth.iv1350.model.Item;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import se.kth.iv1350.DTO.ItemDTO;
 import se.kth.iv1350.model.Sale;
+import se.kth.iv1350.view.TotalRevenueObserver;
 import se.kth.iv1350.model.Receipt;
 import se.kth.iv1350.integration.Printer;
 
@@ -20,6 +25,17 @@ public class Controller {
     private InventoryDB inventoryDB;
     private Sale sale;
     private Printer printer; 
+    private List<TotalRevenueObserver> observers = new ArrayList<>();
+
+    public void addObserver(TotalRevenueObserver observer) {
+        observers.add(observer);
+    }
+
+    private void notifyObservers(double revenue) {
+        for (TotalRevenueObserver obs : observers) {
+            obs.newSale(revenue);
+        }
+    }
 
     /**
      * Constructor for @link Controller
@@ -110,7 +126,7 @@ public class Controller {
             ItemDTO itemDTO = item.getItemDTO();
             inventoryDB.updateItem(itemDTO, item.getAmount());
         }
-
+        notifyObservers(sale.getTotalPrice());
         sale = null;
     }
 
