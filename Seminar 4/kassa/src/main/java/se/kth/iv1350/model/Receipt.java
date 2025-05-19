@@ -26,9 +26,6 @@ public class Receipt {
      */
     public void print(){
 
-        // if(sale == null)
-            // TODO throw exception
-
         int saleLength = sale.getItemCount();
         System.out.println("------------------ Begin receipt -------------------");
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

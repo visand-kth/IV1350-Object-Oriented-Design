@@ -3,6 +3,8 @@ package se.kth.iv1350.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import se.kth.iv1350.view.TotalRevenueView;
+
 /**
  * Handles an sale with @link Item and @link payment
  * Creates an @link receipt
@@ -14,6 +16,7 @@ public class Sale {
     private float totalVAT;
     private float amountPaid;
     private float priceReduction;
+    private List<TotalRevenueObserver> totalRevenueObservers;
 
     /**
      * Constructor for @link Sale
@@ -21,6 +24,9 @@ public class Sale {
     public Sale() {
 
         items = new ArrayList<>();
+        totalRevenueObservers = new ArrayList<>();
+        totalRevenueObservers.add(new TotalRevenueView());
+        totalRevenueObservers.add(new TotalRevenueFileOutput());
         amountPaid = 0;
 
     }
@@ -103,8 +109,9 @@ public class Sale {
      * @param amount
      */
     public void enterPayment(float amount) {
-
+        
         amountPaid = amount;
+        notifyObservers();
 
     }
 
@@ -169,9 +176,6 @@ public class Sale {
      */
     public Item getItem(int index) {
 
-        // if(index < 0 || index >= items.size())
-        // TODO throw exception
-
         return items.get(index);
 
     }
@@ -216,6 +220,16 @@ public class Sale {
 
         return priceReduction;
         
+    }
+
+    private void notifyObservers(){
+
+        for (TotalRevenueObserver TRO : totalRevenueObservers) {
+            
+            TRO.addSale(this);
+
+        }
+
     }
 
 }
