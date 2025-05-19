@@ -6,8 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import se.kth.iv1350.DTO.ItemDTO;
 import se.kth.iv1350.integration.ItemNotFoundException;
-import se.kth.iv1350.model.Item;
-import se.kth.iv1350.model.Sale;
 
 public class SaleTest {
 

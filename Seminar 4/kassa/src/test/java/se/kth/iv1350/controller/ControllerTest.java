@@ -10,7 +10,6 @@ import se.kth.iv1350.model.Sale;
 import se.kth.iv1350.DTO.ItemDTO;
 import se.kth.iv1350.integration.DatabaseFailureException;
 import se.kth.iv1350.integration.InventoryDB;
-import se.kth.iv1350.integration.ItemNotFoundException;
 
 public class ControllerTest {
 

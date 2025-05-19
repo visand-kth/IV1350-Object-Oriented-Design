@@ -1,7 +1,6 @@
 package se.kth.iv1350.model;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * Represents a receipt for a Sale.
