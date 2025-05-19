@@ -12,6 +12,8 @@ public class Sale {
     private List<Item> items;
     private float totalPrice;
     private float totalVAT;
+    private float amountPaid;
+    private float priceReduction;
 
     /**
      * Constructor for @link Sale
@@ -19,6 +21,7 @@ public class Sale {
     public Sale() {
 
         items = new ArrayList<>();
+        amountPaid = 0;
 
     }
 
@@ -29,9 +32,6 @@ public class Sale {
      */
     public void addItem(Item item) {
 
-        item.print();
-        System.out.println();
-
         int potentialDuplicate = checkDuplicate(item);
 
         if (potentialDuplicate < 0)
@@ -40,12 +40,10 @@ public class Sale {
             addToExisting(potentialDuplicate, item);
 
         calculateTotal();
-        printTotal();
-        System.out.println();
 
     }
 
-    void addToExisting(int index, Item item) {
+    private void addToExisting(int index, Item item) {
 
         Item existingItem = items.get(index);
         int currentAmount = existingItem.getAmount();
@@ -97,12 +95,13 @@ public class Sale {
     }
 
     /**
-     * Prints the total cost and vat of the current sale
+     * Enter amount payed into the sale
+     * 
+     * @param amount
      */
-    public void printTotal() {
+    public void enterPayment(float amount) {
 
-        System.out.println(String.format("Total cost (incl VAT): %.2f SEK", totalPrice));
-        System.out.println(String.format("Total VAT: %.2f SEK", totalVAT));
+        amountPaid = amount;
 
     }
 
@@ -114,6 +113,28 @@ public class Sale {
     public float getTotalPrice() {
 
         return totalPrice;
+
+    }
+
+    /**
+     * Getter for the variable totalPrice subtracted with the priceReduction
+     * 
+     * @return Returns the value of totalPrice subtracted with priceReduction
+     */
+    public float getDiscountedPrice(){
+
+        return totalPrice - priceReduction;
+
+    }
+
+    /**
+     * Getter for the variable totalVAT
+     * 
+     * @return Returns the value of totalVAT
+     */
+    public float getTotalVAT() {
+
+        return totalVAT;
 
     }
 
@@ -135,6 +156,63 @@ public class Sale {
 
         return null;
 
+    }
+
+    /**
+     * Indexed getter for the list items
+     * 
+     * @param index The index of the list
+     * @return Returns the item at the specified index
+     */
+    public Item getItem(int index) {
+
+        // if(index < 0 || index >= items.size())
+        // TODO throw exception
+
+        return items.get(index);
+
+    }
+
+    /**
+     * Getter for the getter size of the items variable
+     * 
+     * @return Returns the length of the items in the current sale
+     */
+    public int getItemCount() {
+
+        return items.size();
+
+    }
+
+    /**
+     * Getter for the amountPaid variable
+     * 
+     * @return Returns the value of amountPaid
+     */
+    public float getAmountPaid() {
+
+        return amountPaid;
+
+    }
+
+    /**
+     * Setter for the variable priceReduction
+     * @param price The amount the variable priceReduction should be set to
+     */
+    public void setDiscount(float price){
+
+        priceReduction = price;
+
+    }
+
+    /**
+     * Getter for variable priceReduction
+     * @return Returns the value of the variable priceReduction
+     */
+    public float getPriceReduction(){
+
+        return priceReduction;
+        
     }
 
 }

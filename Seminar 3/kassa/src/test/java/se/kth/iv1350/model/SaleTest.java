@@ -1,11 +1,10 @@
 package se.kth.iv1350.model;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import se.kth.iv1350.model.Item;
-import se.kth.iv1350.model.Sale;
+import se.kth.iv1350.DTO.ItemDTO;
 
 public class SaleTest {
 
@@ -21,8 +20,9 @@ public class SaleTest {
     @Test
     public void testAddItem() {
 
-        Item newItem = new Item(100, 1, "TESTER", 10F, 0.1F, "TEST ITEM");
-        sale.addItem(newItem);
+        ItemDTO itemDTO = new ItemDTO(100, "TEST", 0F, 0F, "TEST ITEM");
+        Item item = new Item(itemDTO, 1);
+        sale.addItem(item);
         Item foundItem = sale.findItem(100);
         assertTrue(foundItem != null, "Could not find added item");
 
@@ -31,9 +31,10 @@ public class SaleTest {
     @Test
     public void testAddDuplicateItem() {
 
-        Item newItem = new Item(102, 1, "YouGoGo Blueberry", 14.9F, 0.06F,
+        ItemDTO itemDTO = new ItemDTO(102, "YouGoGo Blueberry", 14.9F, 0.06F,
                 "YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour.");
-        sale.addItem(newItem);
+        Item item = new Item(itemDTO, 1);
+        sale.addItem(item);
         Item foundItem = sale.findItem(102);
         assertTrue(foundItem != null, "Could not find added duplicate item");
 
@@ -42,10 +43,11 @@ public class SaleTest {
     @Test
     public void testCalculateTotal() {
 
-        Item newItem = new Item(102, 1, "YouGoGo Blueberry", 14.9F, 0.06F,
+        ItemDTO itemDTO = new ItemDTO(102, "YouGoGo Blueberry", 14.9F, 0.06F,
                 "YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour.");
-        sale.addItem(newItem);
-        sale.addItem(newItem);
+        Item item = new Item(itemDTO, 1);
+        sale.addItem(item);
+        sale.addItem(item);
         sale.calculateTotal();
         float total = sale.getTotalPrice();
         float expected = 15.794F;
@@ -56,13 +58,15 @@ public class SaleTest {
     @Test
     public void testCheckDuplicate() {
 
-        Item newItem = new Item(102, 1, "YouGoGo Blueberry", 14.9F, 0.06F,
+        ItemDTO itemDTO = new ItemDTO(102, "YouGoGo Blueberry", 14.9F, 0.06F,
                 "YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour.");
-        sale.addItem(newItem);
-        newItem = new Item(101, 2, "BigWheel Oatmeal", 29.9F, 0.06F,
+        Item item = new Item(itemDTO, 1);
+        sale.addItem(item);
+        itemDTO = new ItemDTO(10, "BigWheel Oatmeal", 29.9F, 0.06F,
                 "BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free");
-        sale.addItem(newItem);
-        int duplicate = sale.checkDuplicate(newItem);
+        item = new Item(itemDTO, 2);
+        sale.addItem(item);
+        int duplicate = sale.checkDuplicate(item);
         int expected = 1;
         assertTrue(duplicate == expected, "Duplicate was not found");
 
