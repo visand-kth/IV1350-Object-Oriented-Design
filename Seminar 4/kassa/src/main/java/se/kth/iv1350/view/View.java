@@ -27,7 +27,9 @@ public class View {
         System.out.println("View: Starting a new sale...");
         try {
             TotalRevenueView revenueView = new TotalRevenueView();
+            TotalRevenueLogging revenueLogging = new TotalRevenueLogging();
             controller.addObserver(revenueView);
+            controller.addObserver(revenueLogging);
             controller.startSale();
             ItemDTO itemDTO1 = new ItemDTO(101, "BigWheel Oatmeal", 29.9F, 0.06F, "BigWheel Oatmeal 500g, whole grain oats, high fiber, gluten free");
             Item item1 = new Item(itemDTO1, 2);
