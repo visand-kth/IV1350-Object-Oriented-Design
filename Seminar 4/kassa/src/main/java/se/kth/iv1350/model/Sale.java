@@ -2,6 +2,7 @@ package se.kth.iv1350.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import se.kth.iv1350.integration.ItemNotFoundException;
 
 /**
  * Handles an sale with @link Item and @link payment
@@ -26,11 +27,15 @@ public class Sale {
      * Adds item to the items list
      * 
      * @param item The item to be added
+     * @throws IllegalArgumentException if the item is null or has invalid data
      */
     public void addItem(Item item) {
-
-        item.print();
-        System.out.println();
+        if (item == null) {
+            throw new IllegalArgumentException("Cannot add null item to sale.");
+        }
+        if (item.getItemDTO() == null) {
+            throw new IllegalArgumentException("Cannot add item with null ItemDTO.");
+        }
 
         int potentialDuplicate = checkDuplicate(item);
 
@@ -38,10 +43,8 @@ public class Sale {
             items.add(item);
         else
             addToExisting(potentialDuplicate, item);
-
+        
         calculateTotal();
-        printTotal();
-        System.out.println();
 
     }
 
@@ -97,16 +100,6 @@ public class Sale {
     }
 
     /**
-     * Prints the total cost and vat of the current sale
-     */
-    public void printTotal() {
-
-        System.out.println(String.format("Total cost (incl VAT): %.2f SEK", totalPrice));
-        System.out.println(String.format("Total VAT: %.2f SEK", totalVAT));
-
-    }
-
-    /**
      * Getter for the variable totalPrice
      * 
      * @return Returns the value of totalPrice
@@ -121,20 +114,39 @@ public class Sale {
      * Searches for the itemID in the current sale
      * 
      * @param ID The ID to search for in this particular sale
-     * @return Returns the @link Item that exists in the current sale, returns null
-     *         if item does not exist
+     * @return Returns the @link Item that exists in the current sale
+     * @throws ItemNotFoundException if item does not exist
      */
-    public Item findItem(int ID) {
-
+    public Item findItem(int ID) throws ItemNotFoundException {
         for (Item item : items) {
-
             if (item.getItemDTO().getID() == ID)
                 return item;
-
         }
-
-        return null;
-
+        throw new ItemNotFoundException(ID);
     }
 
+    /**
+     * Getter for the variable items
+     * @return Returns the items in a list of type Item
+     */
+    public List<Item> getItems() {
+        return items;
+    }
+    
+    /**
+     * Getter for the variable totalVAT
+     * 
+     * @return Returns the value of totalVAT
+     */
+    public float getTotalVAT() {
+        return totalVAT;
+    }
+
+    /**
+     * Creates a receipt for this sale.
+     * @return A new Receipt object representing this sale.
+     */
+    public Receipt createReceipt() {
+        return new Receipt(this);
+    }
 }
