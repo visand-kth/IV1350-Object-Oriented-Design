@@ -41,7 +41,9 @@ public class Controller {
     /**
      * Adds item to the current @link Sale
      * 
-     * @param item The item to be added
+     * @param itemID The item to be added
+     * @param quantity
+     * @throws OperationErrorException
      */
     public void addItem(int itemID, int quantity) throws OperationErrorException{
 
@@ -73,6 +75,7 @@ public class Controller {
      * Enters amount paid and prints the receipt
      * 
      * @param amount The amount paid
+     * @throws OperationErrorException
      */
     public void enterPayment(float amount) throws OperationErrorException{
 
@@ -89,6 +92,12 @@ public class Controller {
             throw new OperationErrorException("Could not print receipt", e);
         }
 
+        try {
+            inventoryDB.updateInventory(sale);
+        } catch (Exception e) {
+            // TODO
+        }
+
         sale = null;
 
     }
@@ -103,6 +112,12 @@ public class Controller {
 
     }
 
+    /**
+     * Requests discount for an customer with their specific ID
+     * 
+     * @param userID The customerID that is searched for
+     * @throws OperationErrorException
+     */
     public void requestDiscount(int userID) throws OperationErrorException{
 
         float discount = 0;

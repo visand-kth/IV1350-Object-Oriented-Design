@@ -8,9 +8,9 @@ public class TotalRevenueView implements TotalRevenueObserver{
     private float totalRevenue = 0;
 
     @Override
-    public void addSale(Sale sale){
+    public void addSale(float revenue){
 
-        totalRevenue += sale.getDiscountedPrice();
+        totalRevenue += revenue;
         System.out.println(String.format("Total revenue: %.2f SEK", totalRevenue));
 
     }

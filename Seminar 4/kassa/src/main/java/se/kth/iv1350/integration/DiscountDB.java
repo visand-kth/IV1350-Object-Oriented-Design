@@ -48,6 +48,8 @@ public class DiscountDB {
      * @param userID The customer ID
      * @return Returns the discount for the specific customer if such discount
      *         exists
+     * @throws InvalidCustomerIDException
+     * @throws NoConnectionException
      */
     public float checkCustomerDiscount(int userID) throws InvalidCustomerIDException, NoConnectionException {
 

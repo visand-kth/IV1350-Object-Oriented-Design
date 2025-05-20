@@ -226,7 +226,7 @@ public class Sale {
 
         for (TotalRevenueObserver TRO : totalRevenueObservers) {
             
-            TRO.addSale(this);
+            TRO.addSale(getDiscountedPrice());
 
         }
 

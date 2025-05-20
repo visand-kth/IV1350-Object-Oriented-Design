@@ -8,6 +8,9 @@ se\kth\iv1350\integration\InvalidCustomerIDException.class
 se\kth\iv1350\integration\InvalidItemIDException.class
 se\kth\iv1350\integration\InventoryDB.class
 se\kth\iv1350\model\Item.class
+se\kth\iv1350\view\TotalRevenueView.class
+se\kth\iv1350\model\TotalRevenueFileOutput.class
+se\kth\iv1350\model\TotalRevenueObserver.class
 se\kth\iv1350\DTO\ItemDTO.class
 se\kth\iv1350\model\Sale.class
 se\kth\iv1350\startup\Main.class

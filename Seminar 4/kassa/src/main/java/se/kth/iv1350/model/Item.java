@@ -43,5 +43,15 @@ public class Item {
         return amount;
 
     }
+    
+    /**
+     * Setter to the variable amount
+     * @param value The value that the variable amount is set to
+     */
+    public void setAmount(int value) {
+
+        amount = value;
+
+    }
 
 }

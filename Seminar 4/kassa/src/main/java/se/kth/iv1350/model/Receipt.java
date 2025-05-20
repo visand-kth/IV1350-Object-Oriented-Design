@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 import se.kth.iv1350.DTO.ItemDTO;
 
 /**
- * Prints an receipt of an @link Sale
+ * Prints an receipt of an @link Sale on an external printer
  */
 public class Receipt {
     
