@@ -3,6 +3,7 @@ package se.kth.iv1350.model;
 import java.util.ArrayList;
 import java.util.List;
 import se.kth.iv1350.integration.ItemNotFoundException;
+import se.kth.iv1350.view.TotalRevenueObserver;
 
 /**
  * Handles an sale with @link Item and @link payment
@@ -13,14 +14,15 @@ public class Sale {
     private List<Item> items;
     private float totalPrice;
     private float totalVAT;
+    private List<TotalRevenueObserver> observers;
 
     /**
      * Constructor for @link Sale
      */
-    public Sale() {
+    public Sale(List<TotalRevenueObserver> observers) {
 
         items = new ArrayList<>();
-
+        this.observers = observers;
     }
 
     /**
@@ -36,16 +38,15 @@ public class Sale {
         if (item.getItemDTO() == null) {
             throw new IllegalArgumentException("Cannot add item with null ItemDTO.");
         }
-
-        int potentialDuplicate = checkDuplicate(item);
-
-        if (potentialDuplicate < 0)
-            items.add(item);
-        else
+        try{
+            int potentialDuplicate = checkDuplicate(item);
             addToExisting(potentialDuplicate, item);
-        
+        } catch (ItemNotFoundException e) {
+            // If no duplicate is found, add the item as a new entry
+            items.add(item);
+        }
         calculateTotal();
-
+        notifyObservers(totalPrice);
     }
 
     void addToExisting(int index, Item item) {
@@ -82,7 +83,7 @@ public class Sale {
      * @param item The item to compare
      * @return The index of a potential duplicate (-1 in case of no duplicate)
      */
-    public int checkDuplicate(Item newItem) {
+    public int checkDuplicate(Item newItem) throws ItemNotFoundException {
 
         for (int i = 0; i < items.size(); i++) {
 
@@ -94,9 +95,7 @@ public class Sale {
                 return i;
 
         }
-
-        return -1;
-
+        throw new ItemNotFoundException(newItem.getItemDTO().getID());  
     }
 
     /**
@@ -148,5 +147,12 @@ public class Sale {
      */
     public Receipt createReceipt() {
         return new Receipt(this);
+    }
+
+
+    private void notifyObservers(double totalRevenue) {
+        for (TotalRevenueObserver obs : observers) {
+            obs.newSale(totalRevenue);
+        }
     }
 }

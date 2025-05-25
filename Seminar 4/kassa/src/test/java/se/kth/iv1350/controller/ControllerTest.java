@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import se.kth.iv1350.model.Item;
 import se.kth.iv1350.model.Sale;
@@ -80,5 +81,27 @@ public class ControllerTest {
         } catch (Exception e) {
             assertTrue(e instanceof DatabaseFailureException, "Expected DatabaseFailureException");
         }   
+    }
+    
+    @Test
+    public void testAddNullItemThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            controller.addItem(null);;
+        }, "Expected IllegalArgumentException when adding item with null ItemDTO");
+    }
+
+    @Test
+    public void testAddItemWithNullDTOThrowsException() {
+        Item nullDTOItem = new Item(null, 1); // Should not throw here!
+        assertThrows(IllegalArgumentException.class, () -> {
+            controller.addItem(nullDTOItem);
+        }, "Expected IllegalArgumentException when adding item with null ItemDTO");
+    }
+
+    @Test
+    public void testFindItemNotFoundThrowsException() {
+        assertThrows(se.kth.iv1350.integration.ItemNotFoundException.class, () -> {
+            inventoryDB.findItem(123456); // 123456 does not exist in inventory
+        }, "Expected ItemNotFoundException when searching for non-existent item ID");
     }
 }

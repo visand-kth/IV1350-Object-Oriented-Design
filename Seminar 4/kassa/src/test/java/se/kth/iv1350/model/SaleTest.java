@@ -1,21 +1,31 @@
 package se.kth.iv1350.model;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
+
 import se.kth.iv1350.DTO.ItemDTO;
 import se.kth.iv1350.integration.ItemNotFoundException;
+import se.kth.iv1350.view.TotalRevenueView;
+import se.kth.iv1350.view.TotalRevenueLogging;
+import se.kth.iv1350.view.TotalRevenueObserver;
 
 public class SaleTest {
-
     private Sale sale;
+    private List<TotalRevenueObserver> observers;
 
     @BeforeEach
     public void setUp() {
-
-        sale = new Sale();
-
+        observers = new java.util.ArrayList<>();
+        TotalRevenueObserver viewObserver = new TotalRevenueView();
+        TotalRevenueObserver logObserver = new TotalRevenueLogging();
+        this.observers.add(viewObserver);
+        this.observers.add(logObserver);
+        // Call newSale on both observers with a test value
+        sale = new Sale(observers);
     }
 
     @Test
@@ -49,7 +59,8 @@ public class SaleTest {
 
     @Test
     public void testCalculateTotal() {
-        ItemDTO itemDTO = new ItemDTO(102, "YouGoGo Blueberry", 14.9F, 0.06F,
+        try {
+            ItemDTO itemDTO = new ItemDTO(102, "YouGoGo Blueberry", 14.9F, 0.06F,
                 "YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour.");
         Item newItem = new Item(itemDTO, 1);
         sale.addItem(newItem);
@@ -58,11 +69,15 @@ public class SaleTest {
         float total = sale.getTotalPrice();
         float expected = 15.794F;
         assertTrue(total == expected, "Expected price did not match calculated price");
+        } catch (Exception e) {
+            assertTrue(false, "Exception caught: " + e.getMessage());
+        }
     }
 
     @Test
     public void testCheckDuplicate() {
-        ItemDTO itemDTO1 = new ItemDTO(102, "YouGoGo Blueberry", 14.9F, 0.06F,
+        try{
+            ItemDTO itemDTO1 = new ItemDTO(102, "YouGoGo Blueberry", 14.9F, 0.06F,
                 "YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour.");
         Item newItem = new Item(itemDTO1, 1);
         sale.addItem(newItem);
@@ -73,6 +88,10 @@ public class SaleTest {
         int duplicate = sale.checkDuplicate(newItem);
         int expected = 1;
         assertTrue(duplicate == expected, "Duplicate was not found");
+        }catch (Exception e) {
+            assertTrue(false, "Exception caught: " + e.getMessage());
+        }
+        
     }
 
     @Test

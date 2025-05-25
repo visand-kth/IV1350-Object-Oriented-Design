@@ -3,6 +3,8 @@ package se.kth.iv1350.integration;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.xml.crypto.Data;
+
 /**
  * The discount database that provides the discounts to the @link Controller
  */
@@ -25,7 +27,7 @@ public class DiscountDB {
      */
     public float getDiscount(int personId) {
         if (personId == 0) {
-            throw new IllegalArgumentException("Person ID cannot be null or empty.");
+            throw new DatabaseFailureException("Person ID cannot be null or empty.");
         }
         Float discount = discountsByPersonId.get(personId);
         if (discount == null) {
@@ -41,7 +43,7 @@ public class DiscountDB {
      */
     public void setDiscount(int personId, float discount) {
         if (personId == 0) {
-            throw new IllegalArgumentException("Person ID cannot be null or empty.");
+            throw new DatabaseFailureException("Person ID cannot be null or empty.");
         }
         if (discount < 0f || discount > 1f) {
             throw new IllegalArgumentException("Discount must be between 0 and 1.");
