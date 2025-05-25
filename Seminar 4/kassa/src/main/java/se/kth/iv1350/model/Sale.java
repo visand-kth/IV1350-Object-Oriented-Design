@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import se.kth.iv1350.view.TotalRevenueView;
+import se.kth.iv1350.view.TotalRevenueViewTemplate;
 
 /**
  * Handles an sale with @link Item and @link payment
@@ -17,6 +18,7 @@ public class Sale {
     private float amountPaid;
     private float priceReduction;
     private List<TotalRevenueObserver> totalRevenueObservers;
+    private List<TotalRevenueObserverTemplate> totalRevenueObserverTemplates;
 
     /**
      * Constructor for @link Sale
@@ -27,6 +29,9 @@ public class Sale {
         totalRevenueObservers = new ArrayList<>();
         totalRevenueObservers.add(new TotalRevenueView());
         totalRevenueObservers.add(new TotalRevenueFileOutput());
+        totalRevenueObserverTemplates = new ArrayList<>();
+        totalRevenueObserverTemplates.add(new TotalRevenueViewTemplate());
+        totalRevenueObserverTemplates.add(new TotalRevenueFileOutputTemplate());
         amountPaid = 0;
 
     }
@@ -227,6 +232,12 @@ public class Sale {
         for (TotalRevenueObserver TRO : totalRevenueObservers) {
             
             TRO.addSale(getDiscountedPrice());
+
+        }
+
+        for (TotalRevenueObserverTemplate TROT : totalRevenueObserverTemplates) {
+            
+            TROT.addSale(getDiscountedPrice());
 
         }
 

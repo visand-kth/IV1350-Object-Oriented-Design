@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="se.kth.iv1350.startup.MainTest" time="0.029" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="se.kth.iv1350.startup.MainTest" time="0.055" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="GB"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-23\bin"/>
-    <property name="sun.java.command" value="C:\Users\vikke\AppData\Local\Temp\surefire10752058698373379109\surefirebooter-20250519230231331_3.jar C:\Users\vikke\AppData\Local\Temp\surefire10752058698373379109 2025-05-19T23-02-31_012-jvmRun1 surefire-20250519230231331_1tmp surefire_0-20250519230231331_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\vikke\AppData\Local\Temp\surefire8382736687366756597\surefirebooter-20250525210218613_3.jar C:\Users\vikke\AppData\Local\Temp\surefire8382736687366756597 2025-05-25T21-02-18_417-jvmRun1 surefire-20250525210218613_1tmp surefire_0-20250525210218613_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\vikke\Documents\Plugg\IV1350\IV1350-Object-Oriented-Design\Seminar 4\kassa\target\test-classes;C:\Users\vikke\Documents\Plugg\IV1350\IV1350-Object-Oriented-Design\Seminar 4\kassa\target\classes;C:\Users\vikke\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.0\junit-jupiter-5.10.0.jar;C:\Users\vikke\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.0\junit-jupiter-api-5.10.0.jar;C:\Users\vikke\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\vikke\.m2\repository\org\junit\platform\junit-platform-commons\1.10.0\junit-platform-commons-1.10.0.jar;C:\Users\vikke\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\vikke\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.0\junit-jupiter-params-5.10.0.jar;C:\Users\vikke\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.0\junit-jupiter-engine-5.10.0.jar;C:\Users\vikke\.m2\repository\org\junit\platform\junit-platform-engine\1.10.0\junit-platform-engine-1.10.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\vikke\AppData\Local\Temp\surefire10752058698373379109\surefirebooter-20250519230231331_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\vikke\AppData\Local\Temp\surefire8382736687366756597\surefirebooter-20250525210218613_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="23.0.1+11-39"/>
@@ -59,54 +59,55 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="testMain" classname="se.kth.iv1350.startup.MainTest" time="0.024">
-    <system-out><![CDATA[Add 1 item with item id 101:
+  <testcase name="testMain" classname="se.kth.iv1350.startup.MainTest" time="0.054">
+    <system-out><![CDATA[[VIEW] Add 1 item with item id 101:
 
-ItemID: 101
-Item name: BigWheel Oatmeal
-Item cost: 31,69 SEK
-VAT: 6,00%
-Item description: BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free
+	ItemID: 101
+	Item name: BigWheel Oatmeal
+	Item cost: 31,69 SEK
+	VAT: 6,00%
+	Item description: BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free
 
-Total cost (incl VAT): 31,69 SEK
-Total VAT: 1,90 SEK
-
-
-Add 1 item with item id 102:
-
-ItemID: 102
-Item name: YouGoGo Blueberry
-Item cost: 15,79 SEK
-VAT: 6,00%
-Item description: YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour.
-
-Total cost (incl VAT): 47,49 SEK
-Total VAT: 2,85 SEK
+	Total cost (incl VAT): 31,69 SEK
+	Total VAT: 1,90 SEK.
 
 
-Add 3 item with item id 101:
+[VIEW] Add 1 item with item id 102:
 
-ItemID: 101
-Item name: BigWheel Oatmeal
-Item cost: 31,69 SEK
-VAT: 6,00%
-Item description: BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free
+	ItemID: 102
+	Item name: YouGoGo Blueberry
+	Item cost: 15,79 SEK
+	VAT: 6,00%
+	Item description: YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour.
 
-Total cost (incl VAT): 47,49 SEK
-Total VAT: 2,85 SEK
+	Total cost (incl VAT): 47,49 SEK
+	Total VAT: 2,85 SEK.
 
 
-End sale:
+[VIEW] Add 3 item with item id 101:
 
-Total: 					47,49 SEK
-VAT: 2,85
+	ItemID: 101
+	Item name: BigWheel Oatmeal
+	Item cost: 31,69 SEK
+	VAT: 6,00%
+	Item description: BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free
 
-Customer 201 is eligible for discount: -4,75 SEK
+	Total cost (incl VAT): 47,49 SEK
+	Total VAT: 2,85 SEK.
 
-Total revenue: 42,74 SEK
-Total revenue: 42,74 SEK
+
+[VIEW] End sale:
+[CONTROLLER] Total: 					47,49 SEK.
+[CONTROLLER] VAT: 2,85.
+[CONTROLLER] 
+Customer 201 is eligible for discount: -4,75 SEK.
+
+[OBSERVER] Total revenue: 42,74 SEK
+[OBSERVER] Total revenue: 42,74 SEK
+[OBSERVER (TEMPLATE)] Total revenue: 42,74 SEK
+[OBSERVER (TEMPLATE)] Total revenue: 42,74 SEK
 ------------------ Begin receipt -------------------
-Time of Sale: 2025-05-19 23:02:32
+Time of Sale: 2025-05-25 21:02:19
 
 
 BigWheel Oatmeal	4 x 31,69	126,78 SEK
@@ -119,47 +120,51 @@ Final: 					42,74 SEK
 Cash: 					500,00 SEK
 Change: 				452,51 SEK
 ------------------ End receipt ---------------------
-Add 1 item with item id 105:
+[VIEW] Add 1 item with item id 105:
 
-Could not add item
-Add 3 item with item id 104:
+[CONTROLLER] Could not add item: ItemDTO was not found with the provided itemID: 105
+[VIEW] There was a problem adding the item.
+[VIEW] Add 3 item with item id 104:
 
-Could not add item
-Add 5 item with item id 103:
+[CONTROLLER] Could not add item: ItemDTO was not found with the provided itemID: 104
+[VIEW] There was a problem adding the item.
+[VIEW] Add 5 item with item id 103:
 
-Could not add item
-Add 7 item with item id 102:
+[CONTROLLER] Could not add item: ItemDTO was not found with the provided itemID: 103
+[VIEW] There was a problem adding the item.
+[VIEW] Add 7 item with item id 102:
 
-ItemID: 102
-Item name: YouGoGo Blueberry
-Item cost: 15,79 SEK
-VAT: 6,00%
-Item description: YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour.
+	ItemID: 102
+	Item name: YouGoGo Blueberry
+	Item cost: 15,79 SEK
+	VAT: 6,00%
+	Item description: YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour.
 
-Total cost (incl VAT): 15,79 SEK
-Total VAT: 0,95 SEK
-
-
-Add 9 item with item id 101:
-
-ItemID: 101
-Item name: BigWheel Oatmeal
-Item cost: 31,69 SEK
-VAT: 6,00%
-Item description: BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free
-
-Total cost (incl VAT): 47,49 SEK
-Total VAT: 2,85 SEK
+	Total cost (incl VAT): 15,79 SEK
+	Total VAT: 0,95 SEK.
 
 
-End sale:
+[VIEW] Add 9 item with item id 101:
 
-Total: 					47,49 SEK
-VAT: 2,85
-Total revenue: 47,49 SEK
-Total revenue: 47,49 SEK
+	ItemID: 101
+	Item name: BigWheel Oatmeal
+	Item cost: 31,69 SEK
+	VAT: 6,00%
+	Item description: BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free
+
+	Total cost (incl VAT): 47,49 SEK
+	Total VAT: 2,85 SEK.
+
+
+[VIEW] End sale:
+[CONTROLLER] Total: 					47,49 SEK.
+[CONTROLLER] VAT: 2,85.
+[OBSERVER] Total revenue: 47,49 SEK
+[OBSERVER] Total revenue: 47,49 SEK
+[OBSERVER (TEMPLATE)] Total revenue: 47,49 SEK
+[OBSERVER (TEMPLATE)] Total revenue: 47,49 SEK
 ------------------ Begin receipt -------------------
-Time of Sale: 2025-05-19 23:02:32
+Time of Sale: 2025-05-25 21:02:19
 
 
 YouGoGo Blueberry	7 x 15,79	110,56 SEK
@@ -167,80 +172,81 @@ BigWheel Oatmeal	9 x 31,69	285,25 SEK
 
 Total: 					47,49 SEK
 VAT: 2,85
-Discount: 				-0,00 SEK
 Final: 					47,49 SEK
 Cash: 					1000,00 SEK
 Change: 				952,51 SEK
 ------------------ End receipt ---------------------
-Add 1 item with item id 101:
+[VIEW] Add 1 item with item id 101:
 
-ItemID: 101
-Item name: BigWheel Oatmeal
-Item cost: 31,69 SEK
-VAT: 6,00%
-Item description: BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free
+	ItemID: 101
+	Item name: BigWheel Oatmeal
+	Item cost: 31,69 SEK
+	VAT: 6,00%
+	Item description: BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free
 
-Total cost (incl VAT): 31,69 SEK
-Total VAT: 1,90 SEK
-
-
-Add 3 item with item id 101:
-
-ItemID: 101
-Item name: BigWheel Oatmeal
-Item cost: 31,69 SEK
-VAT: 6,00%
-Item description: BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free
-
-Total cost (incl VAT): 31,69 SEK
-Total VAT: 1,90 SEK
+	Total cost (incl VAT): 31,69 SEK
+	Total VAT: 1,90 SEK.
 
 
-Add 5 item with item id 102:
+[VIEW] Add 3 item with item id 101:
 
-ItemID: 102
-Item name: YouGoGo Blueberry
-Item cost: 15,79 SEK
-VAT: 6,00%
-Item description: YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour.
+	ItemID: 101
+	Item name: BigWheel Oatmeal
+	Item cost: 31,69 SEK
+	VAT: 6,00%
+	Item description: BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free
 
-Total cost (incl VAT): 47,49 SEK
-Total VAT: 2,85 SEK
-
-
-Add 7 item with item id 101:
-
-ItemID: 101
-Item name: BigWheel Oatmeal
-Item cost: 31,69 SEK
-VAT: 6,00%
-Item description: BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free
-
-Total cost (incl VAT): 47,49 SEK
-Total VAT: 2,85 SEK
+	Total cost (incl VAT): 31,69 SEK
+	Total VAT: 1,90 SEK.
 
 
-Add 9 item with item id 101:
+[VIEW] Add 5 item with item id 102:
 
-ItemID: 101
-Item name: BigWheel Oatmeal
-Item cost: 31,69 SEK
-VAT: 6,00%
-Item description: BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free
+	ItemID: 102
+	Item name: YouGoGo Blueberry
+	Item cost: 15,79 SEK
+	VAT: 6,00%
+	Item description: YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour.
 
-Total cost (incl VAT): 47,49 SEK
-Total VAT: 2,85 SEK
+	Total cost (incl VAT): 47,49 SEK
+	Total VAT: 2,85 SEK.
 
 
-Customer ID was not found: 212
-End sale:
+[VIEW] Add 7 item with item id 101:
 
-Total: 					47,49 SEK
-VAT: 2,85
-Total revenue: 47,49 SEK
-Total revenue: 47,49 SEK
+	ItemID: 101
+	Item name: BigWheel Oatmeal
+	Item cost: 31,69 SEK
+	VAT: 6,00%
+	Item description: BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free
+
+	Total cost (incl VAT): 47,49 SEK
+	Total VAT: 2,85 SEK.
+
+
+[VIEW] Add 9 item with item id 101:
+
+	ItemID: 101
+	Item name: BigWheel Oatmeal
+	Item cost: 31,69 SEK
+	VAT: 6,00%
+	Item description: BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free
+
+	Total cost (incl VAT): 47,49 SEK
+	Total VAT: 2,85 SEK.
+
+
+[CONTROLLER] Could not get discount: Customer ID was not found: 212
+[VIEW] There was a problem with the discount.
+[VIEW] End sale:
+[CONTROLLER] Total: 					47,49 SEK.
+[CONTROLLER] VAT: 2,85.
+[OBSERVER] Total revenue: 47,49 SEK
+[OBSERVER] Total revenue: 47,49 SEK
+[OBSERVER (TEMPLATE)] Total revenue: 47,49 SEK
+[OBSERVER (TEMPLATE)] Total revenue: 47,49 SEK
 ------------------ Begin receipt -------------------
-Time of Sale: 2025-05-19 23:02:32
+Time of Sale: 2025-05-25 21:02:19
 
 
 BigWheel Oatmeal	20 x 31,69	633,88 SEK
@@ -248,60 +254,61 @@ YouGoGo Blueberry	5 x 15,79	78,97 SEK
 
 Total: 					47,49 SEK
 VAT: 2,85
-Discount: 				-0,00 SEK
 Final: 					47,49 SEK
 Cash: 					1000,00 SEK
 Change: 				952,51 SEK
 ------------------ End receipt ---------------------
-Add 1 item with item id 0:
+[VIEW] Add 1 item with item id 0:
 
-Could not add item
-End sale:
-
-Total: 					0,00 SEK
-VAT: 0,00
-Total revenue: 0,00 SEK
-Total revenue: 0,00 SEK
+[CONTROLLER] Could not add item: No connection to the inventoryDB
+[VIEW] There was a problem adding the item.
+[VIEW] End sale:
+[CONTROLLER] Total: 					0,00 SEK.
+[CONTROLLER] VAT: 0,00.
+[OBSERVER] Total revenue: 0,00 SEK
+[OBSERVER] Total revenue: 0,00 SEK
+[OBSERVER (TEMPLATE)] TotalRevenueView was not able to register revenue: No or negative revenue: 0.0
+[OBSERVER (TEMPLATE)] TotalRevenueView was not able to register revenue: No or negative revenue: 0.0
 ------------------ Begin receipt -------------------
-Time of Sale: 2025-05-19 23:02:32
+Time of Sale: 2025-05-25 21:02:19
 
 
 
 Total: 					0,00 SEK
 VAT: 0,00
-Discount: 				-0,00 SEK
 Final: 					0,00 SEK
 Cash: 					100,00 SEK
 Change: 				100,00 SEK
 ------------------ End receipt ---------------------
-Add 1 item with item id 101:
+[VIEW] Add 1 item with item id 101:
 
-ItemID: 101
-Item name: BigWheel Oatmeal
-Item cost: 31,69 SEK
-VAT: 6,00%
-Item description: BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free
+	ItemID: 101
+	Item name: BigWheel Oatmeal
+	Item cost: 31,69 SEK
+	VAT: 6,00%
+	Item description: BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free
 
-Total cost (incl VAT): 31,69 SEK
-Total VAT: 1,90 SEK
+	Total cost (incl VAT): 31,69 SEK
+	Total VAT: 1,90 SEK.
 
 
-End sale:
-
-Total: 					31,69 SEK
-VAT: 1,90
-No connection to the discountDB
-Total revenue: 31,69 SEK
-Total revenue: 31,69 SEK
+[VIEW] End sale:
+[CONTROLLER] Total: 					31,69 SEK.
+[CONTROLLER] VAT: 1,90.
+[CONTROLLER] Could not get discount: No connection to the discountDB
+[VIEW] There was a problem with the discount.
+[OBSERVER] Total revenue: 31,69 SEK
+[OBSERVER] Total revenue: 31,69 SEK
+[OBSERVER (TEMPLATE)] Total revenue: 31,69 SEK
+[OBSERVER (TEMPLATE)] Total revenue: 31,69 SEK
 ------------------ Begin receipt -------------------
-Time of Sale: 2025-05-19 23:02:32
+Time of Sale: 2025-05-25 21:02:19
 
 
 BigWheel Oatmeal	1 x 31,69	31,69 SEK
 
 Total: 					31,69 SEK
 VAT: 1,90
-Discount: 				-0,00 SEK
 Final: 					31,69 SEK
 Cash: 					100,00 SEK
 Change: 				68,31 SEK

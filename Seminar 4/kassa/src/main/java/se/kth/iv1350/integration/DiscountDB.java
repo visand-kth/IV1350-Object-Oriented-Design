@@ -92,17 +92,12 @@ public class DiscountDB {
      * @return Returns the total price to be reduced from the sale with all
      *         discounts
      */
-    public float checkTotalDiscount(int userID, Sale sale) {
+    public float checkTotalDiscount(int userID, Sale sale) throws InvalidCustomerIDException, NoConnectionException{
 
         float price = 1;
 
         price *= 1 - checkPriceDiscount(sale);
-
-        try{
-            price *= 1 - checkCustomerDiscount(userID);
-        } catch(Exception e){
-            System.out.println(e.getMessage());
-        }
+        price *= 1 - checkCustomerDiscount(userID);
 
         return sale.getTotalPrice() * (1 - price);
 

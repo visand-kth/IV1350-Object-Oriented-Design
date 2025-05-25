@@ -42,7 +42,8 @@ public class Receipt {
         
         System.out.println(String.format("\nTotal: \t\t\t\t\t%.2f SEK", sale.getTotalPrice()));
         System.out.println(String.format("VAT: %.2f", sale.getTotalVAT()));
-        System.out.println(String.format("Discount: \t\t\t\t-%.2f SEK", sale.getPriceReduction()));
+        if(sale.getPriceReduction() > 0)
+            System.out.println(String.format("Discount: \t\t\t\t-%.2f SEK", sale.getPriceReduction()));
         System.out.println(String.format("Final: \t\t\t\t\t%.2f SEK", sale.getDiscountedPrice()));
         System.out.println(String.format("Cash: \t\t\t\t\t%.2f SEK", sale.getAmountPaid()));
         System.out.println(String.format("Change: \t\t\t\t%.2f SEK", sale.getAmountPaid() - sale.getTotalPrice()));

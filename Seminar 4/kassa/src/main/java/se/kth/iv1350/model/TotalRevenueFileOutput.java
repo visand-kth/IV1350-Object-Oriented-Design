@@ -11,7 +11,8 @@ public class TotalRevenueFileOutput implements TotalRevenueObserver{
     public void addSale(float revenue){
 
         totalRevenue += revenue;
-        System.out.println(String.format("Total revenue: %.2f SEK", totalRevenue));
+        writeFile();
+        System.out.println(String.format("[OBSERVER] Total revenue: %.2f SEK", totalRevenue));
 
     }
 
@@ -19,15 +20,15 @@ public class TotalRevenueFileOutput implements TotalRevenueObserver{
 
         try{
 
-        File file = new File("totalRevenue.md");
-        file.delete();
-        file.createNewFile();
-        FileWriter newFile = new FileWriter("totalRevenue.md");
-        newFile.write(String.format("Total revenue: %.2f SEK", totalRevenue));
-        newFile.close();
+            File file = new File("totalRevenue.md");
+            file.delete();
+            file.createNewFile();
+            FileWriter newFile = new FileWriter("totalRevenue.md");
+            newFile.write(String.format("[OBSERVER] Total revenue: %.2f SEK", totalRevenue));
+            newFile.close();
 
         } catch(Exception e){
-            System.out.println(e.getMessage());
+            System.out.println("[OBSERVER] " + e.getMessage());
         }
         
     }

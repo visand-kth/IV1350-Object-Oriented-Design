@@ -38,6 +38,9 @@ public class InventoryDB {
 
         for (Item item : inventory) {
 
+            if(item == null)
+                continue;
+
             ItemDTO itemDTO = item.getItemDTO();
 
             if(itemDTO == null)

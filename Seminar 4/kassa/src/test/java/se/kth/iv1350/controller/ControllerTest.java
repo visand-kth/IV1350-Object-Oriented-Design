@@ -33,7 +33,7 @@ public class ControllerTest {
         try{
             controller.enterPayment(9999999f);
             assertTrue(controller.getSale() == null, "Sale did not end properly");
-        }catch(Exception e){
+        } catch(Exception e){
             fail(e.getMessage());
         }
 

@@ -42,21 +42,20 @@ public class Controller {
      * Adds item to the current @link Sale
      * 
      * @param itemID The item to be added
-     * @param quantity
+     * @param quantity The amount of the specified @link itemID items to add
      * @throws OperationErrorException
      */
     public void addItem(int itemID, int quantity) throws OperationErrorException{
 
-        Item item = null;
-
         try {
             ItemDTO itemDTO = inventoryDB.getItemDTO(itemID);
-            item = new Item(itemDTO, quantity);
+            Item item = new Item(itemDTO, quantity);
+            sale.addItem(item);
         } catch (Exception e) {
-            throw new OperationErrorException("Could not add item", e);
+            System.out.println("[CONTROLLER] Could not add item: " + e.getMessage());
+            throw new OperationErrorException("[CONTROLLER] Could not add item.", e);
         }
 
-        sale.addItem(item);
 
     }
 
@@ -82,20 +81,23 @@ public class Controller {
         try{
             sale.enterPayment(amount);
         } catch(Exception e){
-            throw new OperationErrorException("Could not enter payment", e);
+            System.out.println("[CONTROLLER] Could not enter payment: " + e.getMessage());
+            throw new OperationErrorException("[CONTROLLER] Could not enter payment.", e);
         }
 
         try {
             Receipt receipt = new Receipt(sale);
             receipt.print();
         } catch (Exception e) {
-            throw new OperationErrorException("Could not print receipt", e);
+            System.out.println("[CONTROLLER] Could not print receipt: " + e.getMessage());
+            throw new OperationErrorException("[CONTROLLER] Could not print receipt.", e);
         }
 
         try {
             inventoryDB.updateInventory(sale);
         } catch (Exception e) {
-            // TODO
+            System.out.println("[CONTROLLER] Could not update inventory: " + e.getMessage());
+            throw new OperationErrorException("[CONTROLLER] Could not update inventory.", e);
         }
 
         sale = null;
@@ -107,8 +109,8 @@ public class Controller {
      */
     public void endSale() {
 
-        System.out.println(String.format("\nTotal: \t\t\t\t\t%.2f SEK", sale.getTotalPrice()));
-        System.out.println(String.format("VAT: %.2f", sale.getTotalVAT()));
+        System.out.println(String.format("[CONTROLLER] Total: \t\t\t\t\t%.2f SEK.", sale.getTotalPrice()));
+        System.out.println(String.format("[CONTROLLER] VAT: %.2f.", sale.getTotalVAT()));
 
     }
 
@@ -125,13 +127,14 @@ public class Controller {
         try{
             discount = discountDB.checkTotalDiscount(userID, sale);
         } catch(Exception e){
-            throw new OperationErrorException("Could not get discount", e);
+            System.out.println("[CONTROLLER] Could not get discount: " + e.getMessage());
+            throw new OperationErrorException("[CONTROLLER] Could not get discount.", e);
         }
 
         if(discount == 0) return;
 
         sale.setDiscount(discount);
-        System.out.println(String.format("\nCustomer %d is eligible for discount: -%.2f SEK\n", userID, discount));
+        System.out.println(String.format("[CONTROLLER] \nCustomer %d is eligible for discount: -%.2f SEK.\n", userID, discount));
 
     }
 

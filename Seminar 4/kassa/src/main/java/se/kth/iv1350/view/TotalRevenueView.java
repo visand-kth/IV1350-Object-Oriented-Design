@@ -1,6 +1,5 @@
 package se.kth.iv1350.view;
 
-import se.kth.iv1350.model.Sale;
 import se.kth.iv1350.model.TotalRevenueObserver;
 
 public class TotalRevenueView implements TotalRevenueObserver{
@@ -11,7 +10,7 @@ public class TotalRevenueView implements TotalRevenueObserver{
     public void addSale(float revenue){
 
         totalRevenue += revenue;
-        System.out.println(String.format("Total revenue: %.2f SEK", totalRevenue));
+        System.out.println(String.format("[OBSERVER] Total revenue: %.2f SEK", totalRevenue));
 
     }
 

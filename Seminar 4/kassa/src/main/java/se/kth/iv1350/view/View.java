@@ -69,23 +69,17 @@ public class View {
 
     private void addItem(int itemID, int amount){
 
-        System.out.println(String.format("Add %d item with item id %d:\n", amount, itemID));
+        System.out.println(String.format("[VIEW] Add %d item with item id %d:\n", amount, itemID));
 
         try {
-            
             controller.addItem(itemID, amount);
             Item item = controller.getSale().findItem(itemID);
-
             if(item == null) return;
-            
             ItemDTO itemDTO = item.getItemDTO();
-            System.out.println(String.format("ItemID: %d\nItem name: %s\nItem cost: %.2f SEK\nVAT: %.2f%%\nItem description: %s\n\nTotal cost (incl VAT): %.2f SEK\nTotal VAT: %.2f SEK\n\n", 
+            System.out.println(String.format("\tItemID: %d\n\tItem name: %s\n\tItem cost: %.2f SEK\n\tVAT: %.2f%%\n\tItem description: %s\n\n\tTotal cost (incl VAT): %.2f SEK\n\tTotal VAT: %.2f SEK.\n\n", 
             itemDTO.getID(), itemDTO.getName(), itemDTO.getTotalPrice(), itemDTO.getVAT() * 100, itemDTO.getDescription(), controller.getSale().getTotalPrice(), controller.getSale().getTotalVAT()));
-
         } catch (Exception e) {
-
-            System.out.println(e.getMessage());
-
+            System.out.println("[VIEW] There was a problem adding the item.");
         }
 
     }
@@ -100,15 +94,15 @@ public class View {
 
         try{
             controller.enterPayment(payment);
-        } catch (Exception e){
-            System.out.println(e.getMessage());
+        } catch(Exception e){
+            System.out.println("[VIEW] There was a problem entering the payment.");
         }
 
     }
 
     private void endSale(){
 
-        System.out.println("End sale:");
+        System.out.println("[VIEW] End sale:");
         controller.endSale();
         
     }
@@ -118,7 +112,7 @@ public class View {
         try{
             controller.requestDiscount(userID);
         } catch(Exception e){
-            System.out.println(e.getMessage());
+            System.out.println("[VIEW] There was a problem with the discount.");
         }
 
     }
