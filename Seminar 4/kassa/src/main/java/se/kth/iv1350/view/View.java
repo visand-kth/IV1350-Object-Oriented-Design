@@ -1,8 +1,8 @@
 package se.kth.iv1350.view;
 
 import se.kth.iv1350.DTO.ItemDTO;
+import se.kth.iv1350.DTO.SaleDTO;
 import se.kth.iv1350.controller.Controller;
-import se.kth.iv1350.model.Item;
 
 /**
  * Handles the user input to the program
@@ -72,12 +72,10 @@ public class View {
         System.out.println(String.format("[VIEW] Add %d item with item id %d:\n", amount, itemID));
 
         try {
-            controller.addItem(itemID, amount);
-            Item item = controller.getSale().findItem(itemID);
-            if(item == null) return;
-            ItemDTO itemDTO = item.getItemDTO();
+            ItemDTO itemDTO = controller.addItem(itemID, amount);
+            SaleDTO saleDTO = controller.getSaleDTO();
             System.out.println(String.format("\tItemID: %d\n\tItem name: %s\n\tItem cost: %.2f SEK\n\tVAT: %.2f%%\n\tItem description: %s\n\n\tTotal cost (incl VAT): %.2f SEK\n\tTotal VAT: %.2f SEK.\n\n", 
-            itemDTO.getID(), itemDTO.getName(), itemDTO.getTotalPrice(), itemDTO.getVAT() * 100, itemDTO.getDescription(), controller.getSale().getTotalPrice(), controller.getSale().getTotalVAT()));
+            itemDTO.name(), itemDTO.name(), itemDTO.getTotalPrice(), itemDTO.vat() * 100, itemDTO.description(), saleDTO.totalPrice(), saleDTO.totalVAT()));
         } catch (Exception e) {
             System.out.println("[VIEW] There was a problem adding the item.");
         }
@@ -103,8 +101,10 @@ public class View {
     private void endSale(){
 
         System.out.println("[VIEW] End sale:");
-        controller.endSale();
-        
+        SaleDTO saleDTO = controller.endSale();
+        System.out.println(String.format("Total: \t\t\t\t\t%.2f SEK.", saleDTO.totalPrice()));
+        System.out.println(String.format("VAT: %.2f.", saleDTO.totalVAT()));
+
     }
 
     private void requestDiscount(int userID){

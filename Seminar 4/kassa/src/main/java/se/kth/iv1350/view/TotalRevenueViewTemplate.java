@@ -27,7 +27,7 @@ public class TotalRevenueViewTemplate extends TotalRevenueObserverTemplate{
     @Override
     protected void handleErrors(Exception e){
 
-        System.out.println("[OBSERVER (TEMPLATE)] TotalRevenueView was not able to register revenue: " + e.getMessage());
+        System.out.println("[OBSERVER (TEMPLATE)] TotalRevenueView was not able to register revenue: " + e.getStackTrace());
 
     }
 

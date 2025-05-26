@@ -1,6 +1,6 @@
 package se.kth.iv1350.integration;
 
-class InvalidItemIDException extends Exception {
+public class InvalidItemIDException extends Exception {
 
 	/**
 	 * The itemID provided was not found in the inventory database

@@ -49,7 +49,7 @@ public class SaleTest {
         sale.addItem(item);
         sale.addItem(item);
         sale.calculateTotal();
-        float total = sale.getTotalPrice();
+        float total = sale.getSaleDTO().totalPrice();
         float expected = 15.794F;
         assertTrue(total == expected, "Expected price did not match calculated price");
 
@@ -66,8 +66,8 @@ public class SaleTest {
                 "BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free");
         item = new Item(itemDTO, 2);
         sale.addItem(item);
-        int duplicate = sale.checkDuplicate(item);
-        int expected = 1;
+        Item duplicate = sale.checkDuplicate(item);
+        Item expected = item;
         assertTrue(duplicate == expected, "Duplicate was not found");
 
     }

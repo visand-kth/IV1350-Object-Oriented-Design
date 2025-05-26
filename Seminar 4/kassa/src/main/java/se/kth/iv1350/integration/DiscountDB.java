@@ -2,7 +2,7 @@ package se.kth.iv1350.integration;
 
 import java.util.HashMap;
 
-import se.kth.iv1350.model.Sale;
+import se.kth.iv1350.DTO.SaleDTO;
 
 /**
  * The discount database that provides the discounts to the @link Controller
@@ -67,12 +67,12 @@ public class DiscountDB {
      * Returns a 10% discount for a price greater than 1500 and 5% for a price
      * greater than 500
      * 
-     * @param sale The current sale
+     * @param saleDTO The current saleDTO
      * @return Returns a percentage discount if such is eligible
      */
-    private float checkPriceDiscount(Sale sale) {
+    private float checkPriceDiscount(SaleDTO saleDTO) {
 
-        float price = sale.getTotalPrice();
+        float price = saleDTO.totalPrice();
 
         if (price > 1500)
             return 0.1f;
@@ -88,18 +88,18 @@ public class DiscountDB {
      * Searches for the total discounts of an sale with the specified userID
      * 
      * @param userID The ID of the customer
-     * @param sale   The current sale
+     * @param saleDTO The current saleDTO
      * @return Returns the total price to be reduced from the sale with all
      *         discounts
      */
-    public float checkTotalDiscount(int userID, Sale sale) throws InvalidCustomerIDException, NoConnectionException{
+    public float checkTotalDiscount(int userID, SaleDTO saleDTO) throws InvalidCustomerIDException, NoConnectionException{
 
         float price = 1;
 
-        price *= 1 - checkPriceDiscount(sale);
+        price *= 1 - checkPriceDiscount(saleDTO);
         price *= 1 - checkCustomerDiscount(userID);
 
-        return sale.getTotalPrice() * (1 - price);
+        return saleDTO.totalPrice() * (1 - price);
 
     }
 

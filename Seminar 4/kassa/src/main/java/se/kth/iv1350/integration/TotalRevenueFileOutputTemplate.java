@@ -1,8 +1,12 @@
-package se.kth.iv1350.model;
+package se.kth.iv1350.integration;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
+
+import se.kth.iv1350.model.ObserverTotalIncomeDisplayException;
+import se.kth.iv1350.model.TotalRevenueObserverTemplate;
 
 public class TotalRevenueFileOutputTemplate extends TotalRevenueObserverTemplate{
     
@@ -12,32 +16,28 @@ public class TotalRevenueFileOutputTemplate extends TotalRevenueObserverTemplate
     protected void calculateTotalIncome(float addSalePrice){
 
         totalRevenue += addSalePrice;
-        writeFile();
+        
+        try{
+            writeFile();
+        }catch(Exception e){
+            System.out.println("[OBSERVER (TEMPLATE)] Could not write file");
+        }
 
     }
 
-    private void writeFile(){
+    private void writeFile() throws IOException{
 
-        try{
+        File file = new File("totalRevenue.md");
+        file.delete();
+        file.createNewFile();
+        FileWriter newFile = new FileWriter("totalRevenue.md");
+        newFile.write(String.format("Total revenue: %.2f SEK", totalRevenue));
+        newFile.close();
 
-            File file = new File("totalRevenue.md");
-            file.delete();
-            file.createNewFile();
-            FileWriter newFile = new FileWriter("totalRevenue.md");
-            newFile.write(String.format("Total revenue: %.2f SEK", totalRevenue));
-            newFile.close();
-
-        } catch(Exception e){
-            System.out.println("[OBSERVER (TEMPLATE)] " + e.getMessage());
-        }
-        
     }
 
     @Override
     protected void doShowTotalIncome() throws ObserverTotalIncomeDisplayException{
-
-        if(totalRevenue <= 0)
-            throw new ObserverTotalIncomeDisplayException("No or negative revenue: " + totalRevenue);
 
         File file = new File("totalRevenue.md");
         Scanner scanner = null;
@@ -49,7 +49,7 @@ public class TotalRevenueFileOutputTemplate extends TotalRevenueObserverTemplate
         }
         
         if(!scanner.hasNextLine())
-            throw new ObserverTotalIncomeDisplayException("totalRevenue file empty");
+            System.out.println("[OBSERVER (TEMPLATE)] No revenue in file");
 
         String fileContent = scanner.nextLine();
         scanner.close();
@@ -61,7 +61,7 @@ public class TotalRevenueFileOutputTemplate extends TotalRevenueObserverTemplate
     @Override
     protected void handleErrors(Exception e){
 
-        System.out.println("[OBSERVER (TEMPLATE)] TotalRevenueView was not able to register revenue: " + e.getMessage());
+        System.out.println("[OBSERVER (TEMPLATE)] TotalRevenueView was not able to register revenue: " + e.getStackTrace());
 
     }
 

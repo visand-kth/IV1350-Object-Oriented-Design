@@ -3,24 +3,22 @@ package se.kth.iv1350.integration;
 import java.util.ArrayList;
 import java.util.List;
 
+import se.kth.iv1350.DTO.InventoryDTO;
 import se.kth.iv1350.DTO.ItemDTO;
-import se.kth.iv1350.model.Item;
-import se.kth.iv1350.model.Sale;
+import se.kth.iv1350.DTO.SaleDTO;
 
 /**
  * Provides @link Item to the @link Controller
  */
 public class InventoryDB {
 
-    private List<ItemDTO> itemDTOList;
-    private List<Item> inventory;
+    private List<InventoryDTO> inventory;
 
     /**
      * Constructor for @link InventoryDB
      */
     public InventoryDB() {
 
-        itemDTOList = new ArrayList<>();
         inventory = new ArrayList<>();
         setUpInventory();
 
@@ -36,17 +34,14 @@ public class InventoryDB {
      */
     public ItemDTO getItemDTO(int itemID) throws InvalidItemIDException, NoConnectionException {
 
-        for (Item item : inventory) {
+        for (InventoryDTO inventoryDTO : inventory) {
 
-            if(item == null)
-                continue;
-
-            ItemDTO itemDTO = item.getItemDTO();
+            ItemDTO itemDTO = inventoryDTO.itemDTO();
 
             if(itemDTO == null)
                 continue;
 
-            if (itemDTO.getID() == itemID)
+            if (itemDTO.id() == itemID)
                 return itemDTO;
 
         }
@@ -63,30 +58,32 @@ public class InventoryDB {
      * 
      * @param sale
      */
-    public void updateInventory(Sale sale){
+    public void updateInventory(SaleDTO saleDTO){
 
-        int itemCount = sale.getItemCount();
+        // contact external system
+
+        List<InventoryDTO> items = saleDTO.items();
+        int itemCount = items.size();
 
         for(int i = 0; i < itemCount; i++){
 
-            Item item = sale.getItem(i);
-            updateItem(item);
-
+            InventoryDTO inventoryDTO = items.get(i);
+            updateItem(inventoryDTO);
 
         }
 
     }
 
-    private void updateItem(Item item){
+    private void updateItem(InventoryDTO inventoryDTO){
 
         for(int i = 0; i < inventory.size(); i++){
 
-            Item inventoryItem = inventory.get(i);
+            InventoryDTO inventoryItem = inventory.get(i);
 
-            if(inventoryItem.getItemDTO() == item.getItemDTO()){
+            if(inventoryItem.itemDTO() == inventoryDTO.itemDTO()){
 
-                int newAmount = inventoryItem.getAmount() - item.getAmount();
-                inventoryItem.setAmount(newAmount);
+                int newAmount = inventoryItem.count() - inventoryDTO.count();
+                inventoryItem = new InventoryDTO(inventoryItem.itemDTO(), newAmount);
                 return;
 
             }
@@ -95,17 +92,17 @@ public class InventoryDB {
 
     }
 
-    private void addItemToInventory(Item item){
+    private void addItemToInventory(InventoryDTO inventoryDTO){
 
-        inventory.add(item);
+        inventory.add(inventoryDTO);
 
     }
 
     private void setUpInventory() {
 
-        addItemToInventory(new Item(new ItemDTO(100, "TEST ITEM", 0F, 0F, "TEST ITEM"), 99));
-        addItemToInventory(new Item(new ItemDTO(101, "BigWheel Oatmeal", 29.9F, 0.06F, "BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free"), 99));
-        addItemToInventory(new Item(new ItemDTO(102, "YouGoGo Blueberry", 14.9F, 0.06F, "YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour."), 99));
+        addItemToInventory(new InventoryDTO(new ItemDTO(100, "TEST ITEM", 0F, 0F, "TEST ITEM"), 99));
+        addItemToInventory(new InventoryDTO(new ItemDTO(101, "BigWheel Oatmeal", 29.9F, 0.06F, "BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free"), 99));
+        addItemToInventory(new InventoryDTO(new ItemDTO(102, "YouGoGo Blueberry", 14.9F, 0.06F, "YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour."), 99));
 
     }
 

@@ -3,6 +3,10 @@ package se.kth.iv1350.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import se.kth.iv1350.DTO.InventoryDTO;
+import se.kth.iv1350.DTO.SaleDTO;
+import se.kth.iv1350.integration.TotalRevenueFileOutput;
+import se.kth.iv1350.integration.TotalRevenueFileOutputTemplate;
 import se.kth.iv1350.view.TotalRevenueView;
 import se.kth.iv1350.view.TotalRevenueViewTemplate;
 
@@ -12,11 +16,12 @@ import se.kth.iv1350.view.TotalRevenueViewTemplate;
  */
 public class Sale {
 
+    private SaleDTO saleDTO;
     private List<Item> items;
-    private float totalPrice;
-    private float totalVAT;
     private float amountPaid;
     private float priceReduction;
+    private float totalPrice;
+    private float totalVAT;
     private List<TotalRevenueObserver> totalRevenueObservers;
     private List<TotalRevenueObserverTemplate> totalRevenueObserverTemplates;
 
@@ -25,14 +30,19 @@ public class Sale {
      */
     public Sale() {
 
+        amountPaid = 0;
+        priceReduction = 0;
+        totalPrice = 0;
+        totalVAT = 0;
         items = new ArrayList<>();
+
         totalRevenueObservers = new ArrayList<>();
         totalRevenueObservers.add(new TotalRevenueView());
         totalRevenueObservers.add(new TotalRevenueFileOutput());
+
         totalRevenueObserverTemplates = new ArrayList<>();
         totalRevenueObserverTemplates.add(new TotalRevenueViewTemplate());
         totalRevenueObserverTemplates.add(new TotalRevenueFileOutputTemplate());
-        amountPaid = 0;
 
     }
 
@@ -43,27 +53,25 @@ public class Sale {
      */
     public void addItem(Item item) {
 
-        if(item == null)
+        if (item == null)
             return;
 
-        int potentialDuplicate = checkDuplicate(item);
+        Item duplicateItem = checkDuplicate(item);
 
-        if (potentialDuplicate < 0)
+        if (duplicateItem == null)
             items.add(item);
         else
-            addToExisting(potentialDuplicate, item);
+            addToExisting(duplicateItem, item);
 
         calculateTotal();
 
     }
 
-    private void addToExisting(int index, Item item) {
+    private void addToExisting(Item existingItem, Item item) {
 
-        Item existingItem = items.get(index);
         int currentAmount = existingItem.getAmount();
         int newAmount = currentAmount + item.getAmount();
-        Item newItem = new Item(existingItem.getItemDTO(), newAmount);
-        items.set(index, newItem);
+        existingItem.setAmount(newAmount);
 
     }
 
@@ -79,9 +87,26 @@ public class Sale {
 
             float itemPrice = item.getItemDTO().getTotalPrice();
             totalPrice += itemPrice;
-            totalVAT += itemPrice * item.getItemDTO().getVAT();
+            totalVAT += itemPrice * item.getItemDTO().vat();
 
         }
+
+        List<InventoryDTO> itemsDTO = getInventoryDTO();
+        saleDTO = new SaleDTO(itemsDTO, totalPrice, totalVAT, priceReduction);
+
+    }
+
+    private List<InventoryDTO> getInventoryDTO(){
+
+        List<InventoryDTO> itemsDTO = new ArrayList<>();
+        
+        for(Item item : items){
+
+            itemsDTO.add(new InventoryDTO(item.getItemDTO(), item.getAmount()));
+
+        }
+
+        return itemsDTO;
 
     }
 
@@ -89,22 +114,22 @@ public class Sale {
      * Checks for duplicate item in the current sale
      * 
      * @param item The item to compare
-     * @return The index of a potential duplicate (-1 in case of no duplicate)
+     * @return The item match of the current sale
      */
-    public int checkDuplicate(Item newItem) {
+    public Item checkDuplicate(Item newItem) {
 
         for (int i = 0; i < items.size(); i++) {
 
             Item saleItem = items.get(i);
-            int saleItemID = saleItem.getItemDTO().getID();
-            int newItemID = newItem.getItemDTO().getID();
+            int saleItemID = saleItem.getItemDTO().id();
+            int newItemID = newItem.getItemDTO().id();
 
             if (saleItemID == newItemID)
-                return i;
+                return saleItem;
 
         }
 
-        return -1;
+        return null;
 
     }
 
@@ -114,20 +139,22 @@ public class Sale {
      * @param amount
      */
     public void enterPayment(float amount) {
-        
+
         amountPaid = amount;
         notifyObservers();
 
     }
 
     /**
-     * Getter for the variable totalPrice
+     * Getter for the variable saleDTO
      * 
-     * @return Returns the value of totalPrice
+     * @return Returns the value of the variable saleDTO
      */
-    public float getTotalPrice() {
+    public SaleDTO getSaleDTO() {
 
-        return totalPrice;
+        List<InventoryDTO> itemsDTO = getInventoryDTO();
+        saleDTO = new SaleDTO(itemsDTO, totalPrice, totalVAT, priceReduction);
+        return saleDTO;
 
     }
 
@@ -136,20 +163,9 @@ public class Sale {
      * 
      * @return Returns the value of totalPrice subtracted with priceReduction
      */
-    public float getDiscountedPrice(){
+    public float getDiscountedPrice() {
 
-        return totalPrice - priceReduction;
-
-    }
-
-    /**
-     * Getter for the variable totalVAT
-     * 
-     * @return Returns the value of totalVAT
-     */
-    public float getTotalVAT() {
-
-        return totalVAT;
+        return saleDTO.totalPrice() - priceReduction;
 
     }
 
@@ -164,7 +180,7 @@ public class Sale {
 
         for (Item item : items) {
 
-            if (item.getItemDTO().getID() == ID)
+            if (item.getItemDTO().id() == ID)
                 return item;
 
         }
@@ -192,7 +208,7 @@ public class Sale {
      */
     public int getItemCount() {
 
-        return items.size();
+        return saleDTO.items().size();
 
     }
 
@@ -209,9 +225,10 @@ public class Sale {
 
     /**
      * Setter for the variable priceReduction
+     * 
      * @param price The amount the variable priceReduction should be set to
      */
-    public void setDiscount(float price){
+    public void setDiscount(float price) {
 
         priceReduction = price;
 
@@ -219,25 +236,26 @@ public class Sale {
 
     /**
      * Getter for variable priceReduction
+     * 
      * @return Returns the value of the variable priceReduction
      */
-    public float getPriceReduction(){
+    public float getPriceReduction() {
 
         return priceReduction;
-        
+
     }
 
-    private void notifyObservers(){
+    private void notifyObservers() {
 
-        for (TotalRevenueObserver TRO : totalRevenueObservers) {
-            
-            TRO.addSale(getDiscountedPrice());
+        for (TotalRevenueObserver totalRevenueObserver : totalRevenueObservers) {
+
+            totalRevenueObserver.addSale(getDiscountedPrice());
 
         }
 
-        for (TotalRevenueObserverTemplate TROT : totalRevenueObserverTemplates) {
-            
-            TROT.addSale(getDiscountedPrice());
+        for (TotalRevenueObserverTemplate totalRevenueObserverTemplate : totalRevenueObserverTemplates) {
+
+            totalRevenueObserverTemplate.addSale(getDiscountedPrice());
 
         }
 
