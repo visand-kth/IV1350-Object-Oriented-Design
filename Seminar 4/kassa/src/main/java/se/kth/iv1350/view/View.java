@@ -12,6 +12,7 @@ import se.kth.iv1350.integration.NoConnectionException;
 import se.kth.iv1350.integration.TotalRevenueFileOutput;
 import se.kth.iv1350.integration.TotalRevenueFileOutputTemplate;
 import se.kth.iv1350.model.TotalRevenueObserver;
+import se.kth.iv1350.util.FileLogger;
 
 /**
  * Handles the user input to the program
@@ -19,6 +20,7 @@ import se.kth.iv1350.model.TotalRevenueObserver;
 public class View {
     
     private Controller controller;
+    private FileLogger fileLogger;
     private List<TotalRevenueObserver> totalRevenueObservers;
 
     /**
@@ -27,6 +29,7 @@ public class View {
     public View(Controller controller){
         
         this.controller = controller;
+        fileLogger = new FileLogger();
         totalRevenueObservers = new ArrayList<>();
         totalRevenueObservers.add(new TotalRevenueView());
         totalRevenueObservers.add(new TotalRevenueFileOutput());
@@ -84,43 +87,60 @@ public class View {
 
     private void addItem(int itemID, int amount){
 
-        System.out.println(String.format("[VIEW] Add %d item with item id %d:\n", amount, itemID));
-
         try {
+            System.out.println(String.format("[VIEW] Add %d item with item id %d:\n", amount, itemID));
             ItemDTO itemDTO = controller.addItem(itemID, amount);
             SaleDTO saleDTO = controller.getSaleDTO();
             System.out.println(String.format("\tItemID: %d\n\tItem name: %s\n\tItem cost: %.2f SEK\n\tVAT: %.2f%%\n\tItem description: %s\n\n\tTotal cost (incl VAT): %.2f SEK\n\tTotal VAT: %.2f SEK.\n\n", 
             itemDTO.name(), itemDTO.name(), itemDTO.getTotalPrice(), itemDTO.vat() * 100, itemDTO.description(), saleDTO.totalPrice(), saleDTO.totalVAT()));
         } catch (InvalidItemIDException e) {
             System.out.println("[VIEW] ItemID was not found.");
+            fileLogger.logException(e);
         } catch (NoConnectionException e) {
             System.out.println("[VIEW] No connection to the database.");
+            fileLogger.logException(e);
         } catch (Exception e) {
             System.out.println("[VIEW] There was an unexpected problem adding the item.");
+            fileLogger.logException(e);
         }
 
     }
 
     private void startSale(){
 
-        controller.startSale();
+        try{
+            controller.startSale();
+        } catch(Exception e){
+            System.out.println("[VIEW] There was an unexpected problem starting the sale.");
+            fileLogger.logException(e);
+        }
 
     }
 
     private void enterPayment(float payment){
 
-        notifyObservers();
-        controller.enterPayment(payment);
+        try{
+            notifyObservers();
+            controller.enterPayment(payment);
+        } catch(Exception e){
+            System.out.println("[VIEW] There was an unexpected problem entering payment.");
+            fileLogger.logException(e);
+        }
     
     }
 
     private void endSale(){
 
-        System.out.println("[VIEW] End sale:");
-        SaleDTO saleDTO = controller.endSale();
-        System.out.println(String.format("Total: \t\t\t\t\t%.2f SEK.", saleDTO.totalPrice()));
-        System.out.println(String.format("VAT: %.2f.", saleDTO.totalVAT()));
-
+        try{
+            System.out.println("[VIEW] End sale:");
+            SaleDTO saleDTO = controller.endSale();
+            System.out.println(String.format("Total: \t\t\t\t\t%.2f SEK.", saleDTO.totalPrice()));
+            System.out.println(String.format("VAT: %.2f.", saleDTO.totalVAT()));
+        } catch(Exception e){
+            System.out.println("[VIEW] There was an unexpected problem terminating the sale.");
+            fileLogger.logException(e);
+        }
+        
     }
 
     private void requestDiscount(int userID){
@@ -129,23 +149,29 @@ public class View {
             controller.requestDiscount(userID);
         } catch(InvalidCustomerIDException e){
             System.out.println("[VIEW] CustomerID was not found.");
+            fileLogger.logException(e);
         } catch(NoConnectionException e){
             System.out.println("[VIEW] No connection to the database.");
+            fileLogger.logException(e);
         } catch(Exception e){
             System.out.println("[VIEW] There was an unexpected problem with the discount.");
+            fileLogger.logException(e);
         }
 
     }
 
     private void notifyObservers() {
 
-        for (TotalRevenueObserver totalRevenueObserver : totalRevenueObservers) {
+        try{
+            for (TotalRevenueObserver totalRevenueObserver : totalRevenueObservers) {
 
-            SaleDTO saleDTO = controller.getSaleDTO();
-            if(saleDTO == null) continue;
-            float revenue = saleDTO.totalPrice() - saleDTO.priceReduction();
-            totalRevenueObserver.addSale(revenue);
+                SaleDTO saleDTO = controller.getSaleDTO();
+                float revenue = saleDTO.totalPrice() - saleDTO.priceReduction();
+                totalRevenueObserver.addSale(revenue);
 
+            }
+        } catch(Exception e){
+            fileLogger.logException(e);
         }
 
     }
