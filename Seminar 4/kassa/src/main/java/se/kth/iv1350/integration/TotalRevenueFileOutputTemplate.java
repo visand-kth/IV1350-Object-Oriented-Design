@@ -5,7 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import se.kth.iv1350.model.ObserverTotalIncomeDisplayException;
 import se.kth.iv1350.model.TotalRevenueObserverTemplate;
 
 public class TotalRevenueFileOutputTemplate extends TotalRevenueObserverTemplate{
@@ -27,26 +26,22 @@ public class TotalRevenueFileOutputTemplate extends TotalRevenueObserverTemplate
 
     private void writeFile() throws IOException{
 
-        File file = new File("totalRevenue.md");
+        File file = new File("totalRevenueTemplate.txt");
         file.delete();
         file.createNewFile();
-        FileWriter newFile = new FileWriter("totalRevenue.md");
+        FileWriter newFile = new FileWriter("totalRevenueTemplate.txt");
         newFile.write(String.format("Total revenue: %.2f SEK", totalRevenue));
         newFile.close();
 
     }
 
     @Override
-    protected void doShowTotalIncome() throws ObserverTotalIncomeDisplayException{
+    protected void doShowTotalIncome() throws Exception{
 
-        File file = new File("totalRevenue.md");
+        File file = new File("totalRevenueTemplate.txt");
         Scanner scanner = null;
 
-        try{
-            scanner = new Scanner(file);
-        } catch (Exception e){
-            throw new ObserverTotalIncomeDisplayException("File not found");
-        }
+        scanner = new Scanner(file);
         
         if(!scanner.hasNextLine())
             System.out.println("[OBSERVER (TEMPLATE)] No revenue in file");
@@ -61,7 +56,7 @@ public class TotalRevenueFileOutputTemplate extends TotalRevenueObserverTemplate
     @Override
     protected void handleErrors(Exception e){
 
-        System.out.println("[OBSERVER (TEMPLATE)] TotalRevenueView was not able to register revenue: " + e.getStackTrace());
+        System.out.println("[OBSERVER (TEMPLATE)] TotalRevenueView was not able to register revenue");
 
     }
 

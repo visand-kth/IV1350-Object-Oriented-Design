@@ -25,10 +25,10 @@ public class TotalRevenueFileOutput implements TotalRevenueObserver{
 
     private void writeFile() throws IOException{
 
-        File file = new File("totalRevenue.md");
+        File file = new File("totalRevenue.txt");
         file.delete();
         file.createNewFile();
-        FileWriter newFile = new FileWriter("totalRevenue.md");
+        FileWriter newFile = new FileWriter("totalRevenue.txt");
         newFile.write(String.format("Total revenue: %.2f SEK", totalRevenue));
         newFile.close();
         

@@ -1,1 +1,0 @@
-Total revenue: 31,69 SEK

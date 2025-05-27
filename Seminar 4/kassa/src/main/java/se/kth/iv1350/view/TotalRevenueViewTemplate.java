@@ -1,6 +1,5 @@
 package se.kth.iv1350.view;
 
-import se.kth.iv1350.model.ObserverTotalIncomeDisplayException;
 import se.kth.iv1350.model.TotalRevenueObserverTemplate;
 
 public class TotalRevenueViewTemplate extends TotalRevenueObserverTemplate{
@@ -15,10 +14,10 @@ public class TotalRevenueViewTemplate extends TotalRevenueObserverTemplate{
     }
 
     @Override
-    protected void doShowTotalIncome() throws ObserverTotalIncomeDisplayException{
+    protected void doShowTotalIncome() throws Exception{
 
         if(totalRevenue <= 0)
-            throw new ObserverTotalIncomeDisplayException("No or negative revenue: " + totalRevenue);
+            throw new Exception("No or negative revenue: " + totalRevenue);
 
         System.out.println(String.format("[OBSERVER (TEMPLATE)] Total revenue: %.2f SEK", totalRevenue));
 
@@ -27,7 +26,7 @@ public class TotalRevenueViewTemplate extends TotalRevenueObserverTemplate{
     @Override
     protected void handleErrors(Exception e){
 
-        System.out.println("[OBSERVER (TEMPLATE)] TotalRevenueView was not able to register revenue: " + e.getStackTrace());
+        System.out.println("[OBSERVER (TEMPLATE)] TotalRevenueView was not able to register revenue");
 
     }
 

@@ -29,8 +29,8 @@ public class InventoryDB {
      * 
      * @param itemID Used for the item search
      * @return Returns the @link ItemDTO that corresponds to the itemID
-     * @throws InvalidItemIDException
-     * @throws NoConnectionException
+     * @throws InvalidItemIDException This exception is triggered when the itemID was not found in the database
+     * @throws NoConnectionException This exception is triggered when there is no connection to the database (in this case itemID = 0)
      */
     public ItemDTO getItemDTO(int itemID) throws InvalidItemIDException, NoConnectionException {
 

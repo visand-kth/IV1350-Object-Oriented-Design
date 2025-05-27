@@ -50,7 +50,7 @@ public class SaleTest {
         sale.addItem(item);
         sale.calculateTotal();
         float total = sale.getSaleDTO().totalPrice();
-        float expected = 15.794F;
+        float expected = 31.588F;
         assertTrue(total == expected, "Expected price did not match calculated price");
 
     }

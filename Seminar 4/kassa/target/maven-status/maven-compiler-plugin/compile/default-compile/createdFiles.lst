@@ -5,7 +5,6 @@ se\kth\iv1350\integration\NoConnectionException.class
 se\kth\iv1350\controller\Controller.class
 se\kth\iv1350\integration\InvalidCustomerIDException.class
 se\kth\iv1350\integration\InvalidItemIDException.class
-se\kth\iv1350\model\ObserverTotalIncomeDisplayException.class
 se\kth\iv1350\integration\InventoryDB.class
 se\kth\iv1350\integration\TotalRevenueFileOutput.class
 se\kth\iv1350\model\Item.class

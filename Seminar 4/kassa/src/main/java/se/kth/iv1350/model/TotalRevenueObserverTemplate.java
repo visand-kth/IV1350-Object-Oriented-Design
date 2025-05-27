@@ -1,12 +1,13 @@
 package se.kth.iv1350.model;
 
-public abstract class TotalRevenueObserverTemplate {
+public abstract class TotalRevenueObserverTemplate implements TotalRevenueObserver{
 
     /**
      * Adds a finished sale price to the observer to process
      * 
      * @param addSalePrice The final price of a finished sale
      */
+    @Override
     public void addSale(float addSalePrice){
 
         calculateTotalIncome(addSalePrice);
@@ -22,7 +23,7 @@ public abstract class TotalRevenueObserverTemplate {
         }
     }
 
-    protected abstract void doShowTotalIncome() throws ObserverTotalIncomeDisplayException;
+    protected abstract void doShowTotalIncome() throws Exception;
 
     protected abstract void handleErrors(Exception e);
 

@@ -5,10 +5,6 @@ import java.util.List;
 
 import se.kth.iv1350.DTO.InventoryDTO;
 import se.kth.iv1350.DTO.SaleDTO;
-import se.kth.iv1350.integration.TotalRevenueFileOutput;
-import se.kth.iv1350.integration.TotalRevenueFileOutputTemplate;
-import se.kth.iv1350.view.TotalRevenueView;
-import se.kth.iv1350.view.TotalRevenueViewTemplate;
 
 /**
  * Handles an sale with @link Item and @link payment
@@ -22,8 +18,6 @@ public class Sale {
     private float priceReduction;
     private float totalPrice;
     private float totalVAT;
-    private List<TotalRevenueObserver> totalRevenueObservers;
-    private List<TotalRevenueObserverTemplate> totalRevenueObserverTemplates;
 
     /**
      * Constructor for @link Sale
@@ -35,14 +29,6 @@ public class Sale {
         totalPrice = 0;
         totalVAT = 0;
         items = new ArrayList<>();
-
-        totalRevenueObservers = new ArrayList<>();
-        totalRevenueObservers.add(new TotalRevenueView());
-        totalRevenueObservers.add(new TotalRevenueFileOutput());
-
-        totalRevenueObserverTemplates = new ArrayList<>();
-        totalRevenueObserverTemplates.add(new TotalRevenueViewTemplate());
-        totalRevenueObserverTemplates.add(new TotalRevenueFileOutputTemplate());
 
     }
 
@@ -85,7 +71,7 @@ public class Sale {
 
         for (Item item : items) {
 
-            float itemPrice = item.getItemDTO().getTotalPrice();
+            float itemPrice = item.getItemDTO().getTotalPrice() * item.getAmount();
             totalPrice += itemPrice;
             totalVAT += itemPrice * item.getItemDTO().vat();
 
@@ -141,7 +127,6 @@ public class Sale {
     public void enterPayment(float amount) {
 
         amountPaid = amount;
-        notifyObservers();
 
     }
 
@@ -242,22 +227,6 @@ public class Sale {
     public float getPriceReduction() {
 
         return priceReduction;
-
-    }
-
-    private void notifyObservers() {
-
-        for (TotalRevenueObserver totalRevenueObserver : totalRevenueObservers) {
-
-            totalRevenueObserver.addSale(getDiscountedPrice());
-
-        }
-
-        for (TotalRevenueObserverTemplate totalRevenueObserverTemplate : totalRevenueObserverTemplates) {
-
-            totalRevenueObserverTemplate.addSale(getDiscountedPrice());
-
-        }
 
     }
 
