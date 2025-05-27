@@ -9,6 +9,7 @@ import se.kth.iv1350.integration.InvalidItemIDException;
 import se.kth.iv1350.integration.InventoryDB;
 import se.kth.iv1350.integration.NoConnectionException;
 import se.kth.iv1350.integration.Printer;
+import se.kth.iv1350.integration.Register;
 import se.kth.iv1350.model.Item;
 import se.kth.iv1350.model.Sale;
 
@@ -20,6 +21,7 @@ public class Controller {
     private AccountingDB accountingDB;
     private DiscountDB discountDB;
     private InventoryDB inventoryDB;
+    private Register register;
     private Sale sale;
 
     /**
@@ -30,6 +32,7 @@ public class Controller {
         accountingDB = new AccountingDB();
         discountDB = new DiscountDB();
         inventoryDB = new InventoryDB();
+        register = new Register();
 
     }
 
@@ -67,6 +70,7 @@ public class Controller {
     public void enterPayment(float amount) {
 
         sale.enterPayment(amount);
+        register.increaseAmount(amount);
         Printer printer = new Printer();
         printer.print(sale.getSaleDTO(), amount);
         inventoryDB.updateInventory(sale.getSaleDTO());
