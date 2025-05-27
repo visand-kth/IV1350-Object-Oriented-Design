@@ -15,9 +15,9 @@ public class ControllerTest {
     @BeforeEach
     public void setUp() {
 
-        controller = new Controller();
-        controller.startSale();
         try{
+            controller = new Controller();
+            controller.startSale();
             controller.addItem(101, 2);
             controller.addItem(102, 1);
         } catch(Exception e){
@@ -29,8 +29,8 @@ public class ControllerTest {
     @Test
     public void testEndSale() {
 
-        controller.endSale();
         try{
+            controller.endSale();
             controller.enterPayment(9999999f);
             assertTrue(controller.getSale() == null, "Sale did not end properly");
         } catch(Exception e){
@@ -43,7 +43,7 @@ public class ControllerTest {
     public void testAddItem() {
 
         try{
-        controller.addItem(100, 1);
+            controller.addItem(100, 1);
         } catch(Exception e){
             fail(e.getMessage());
         }

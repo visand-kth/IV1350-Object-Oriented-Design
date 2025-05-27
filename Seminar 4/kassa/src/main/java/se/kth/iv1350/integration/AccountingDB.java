@@ -1,8 +1,9 @@
 package se.kth.iv1350.integration;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.HashMap;
 
+import se.kth.iv1350.DTO.RecordDTO;
 import se.kth.iv1350.DTO.SaleDTO;
 
 /**
@@ -10,24 +11,26 @@ import se.kth.iv1350.DTO.SaleDTO;
  */
 public class AccountingDB {
     
-    private List<SaleDTO> accounting;
+    private HashMap<Integer, RecordDTO> accounting;
 
     /**
      * Constructor for @link AccountingDB
      */
     public AccountingDB(){
 
-        accounting = new ArrayList<>();
+        accounting = new HashMap<>();
 
     }
 
     /**
      * Saves the specified sale to the accounting database
-     * @param sale The specific sale to save to the database
+     * @param saleDTO The specific sale to save to the database
      */
     public void saveSale(SaleDTO saleDTO){
 
-        accounting.add(saleDTO);
+        LocalDateTime dateTime = LocalDateTime.now();
+        RecordDTO recordDTO = new RecordDTO(saleDTO, dateTime);
+        accounting.put(saleDTO.customerID(), recordDTO);
 
     }
 

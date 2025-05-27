@@ -92,7 +92,7 @@ public class View {
             ItemDTO itemDTO = controller.addItem(itemID, amount);
             SaleDTO saleDTO = controller.getSaleDTO();
             System.out.println(String.format("\tItemID: %d\n\tItem name: %s\n\tItem cost: %.2f SEK\n\tVAT: %.2f%%\n\tItem description: %s\n\n\tTotal cost (incl VAT): %.2f SEK\n\tTotal VAT: %.2f SEK.\n\n", 
-            itemDTO.name(), itemDTO.name(), itemDTO.getTotalPrice(), itemDTO.vat() * 100, itemDTO.description(), saleDTO.totalPrice(), saleDTO.totalVAT()));
+            itemDTO.id(), itemDTO.name(), itemDTO.getTotalPrice(), itemDTO.vat() * 100, itemDTO.description(), saleDTO.totalPrice(), saleDTO.totalVAT()));
         } catch (InvalidItemIDException e) {
             System.out.println("[VIEW] ItemID was not found.");
             fileLogger.logException(e);

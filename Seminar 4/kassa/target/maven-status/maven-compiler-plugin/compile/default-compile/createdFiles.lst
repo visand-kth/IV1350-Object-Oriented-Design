@@ -1,4 +1,5 @@
 se\kth\iv1350\view\TotalRevenueViewTemplate.class
+se\kth\iv1350\util\FileLogger.class
 se\kth\iv1350\view\View.class
 se\kth\iv1350\integration\AccountingDB.class
 se\kth\iv1350\integration\NoConnectionException.class
@@ -8,6 +9,7 @@ se\kth\iv1350\integration\InvalidItemIDException.class
 se\kth\iv1350\integration\InventoryDB.class
 se\kth\iv1350\integration\TotalRevenueFileOutput.class
 se\kth\iv1350\model\Item.class
+se\kth\iv1350\DTO\RecordDTO.class
 se\kth\iv1350\integration\Printer.class
 se\kth\iv1350\view\TotalRevenueView.class
 se\kth\iv1350\model\TotalRevenueObserver.class

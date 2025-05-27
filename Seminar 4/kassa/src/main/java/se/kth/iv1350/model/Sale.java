@@ -18,6 +18,7 @@ public class Sale {
     private float priceReduction;
     private float totalPrice;
     private float totalVAT;
+    private int customerID;
 
     /**
      * Constructor for @link Sale
@@ -28,6 +29,7 @@ public class Sale {
         priceReduction = 0;
         totalPrice = 0;
         totalVAT = 0;
+        customerID = 0;
         items = new ArrayList<>();
 
     }
@@ -78,15 +80,15 @@ public class Sale {
         }
 
         List<InventoryDTO> itemsDTO = getInventoryDTO();
-        saleDTO = new SaleDTO(itemsDTO, totalPrice, totalVAT, priceReduction);
+        saleDTO = new SaleDTO(itemsDTO, totalPrice, totalVAT, priceReduction, customerID);
 
     }
 
-    private List<InventoryDTO> getInventoryDTO(){
+    private List<InventoryDTO> getInventoryDTO() {
 
         List<InventoryDTO> itemsDTO = new ArrayList<>();
-        
-        for(Item item : items){
+
+        for (Item item : items) {
 
             itemsDTO.add(new InventoryDTO(item.getItemDTO(), item.getAmount()));
 
@@ -138,7 +140,7 @@ public class Sale {
     public SaleDTO getSaleDTO() {
 
         List<InventoryDTO> itemsDTO = getInventoryDTO();
-        saleDTO = new SaleDTO(itemsDTO, totalPrice, totalVAT, priceReduction);
+        saleDTO = new SaleDTO(itemsDTO, totalPrice, totalVAT, priceReduction, customerID);
         return saleDTO;
 
     }
@@ -227,6 +229,17 @@ public class Sale {
     public float getPriceReduction() {
 
         return priceReduction;
+
+    }
+
+    /**
+     * Setter for variable customerID
+     * 
+     * @param customerID The value to set the variable customerID to
+     */
+    public void setCustomerID(int customerID) {
+
+        this.customerID = customerID;
 
     }
 

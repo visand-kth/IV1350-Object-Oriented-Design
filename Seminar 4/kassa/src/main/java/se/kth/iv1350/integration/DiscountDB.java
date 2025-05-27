@@ -16,7 +16,7 @@ public class DiscountDB {
      */
     public DiscountDB() {
 
-        discounts = new HashMap<>();
+        discounts = new HashMap<Integer, Float>();
         addDiscountedCustomers();
 
     }

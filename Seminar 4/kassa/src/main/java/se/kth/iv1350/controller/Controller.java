@@ -79,6 +79,7 @@ public class Controller {
      */
     public SaleDTO endSale() {
 
+        // accountingDB.saveSale(sale.getSaleDTO());
         return sale.getSaleDTO();
 
     }
@@ -117,6 +118,7 @@ public class Controller {
      */
     public void requestDiscount(int userID) throws InvalidCustomerIDException, NoConnectionException {
 
+        sale.setCustomerID(userID);
         sale.setDiscount(discountDB.checkTotalDiscount(userID, sale.getSaleDTO()));
 
     }
