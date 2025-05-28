@@ -5,15 +5,16 @@ import se.kth.iv1350.view.View;
 
 /**
  * Tasked with starting up all the components in the program
+ * 
  * @author Viktor Sandström
  * @author Adrian Boström
- * @author Dante Solender
  */
 public class Main {
-    
+
     /**
      * The main function
-     * @param args
+     * 
+     * @param args No arguments are used in this program
      */
     public static void main(String[] args) {
 

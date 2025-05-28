@@ -8,15 +8,18 @@ import se.kth.iv1350.DTO.SaleDTO;
 
 /**
  * Accounting database for @link Controller
+ * 
+ * @author Viktor Sandström
+ * @author Adrian Boström
  */
 public class AccountingDB {
-    
+
     private HashMap<Integer, RecordDTO> accounting;
 
     /**
      * Constructor for @link AccountingDB
      */
-    public AccountingDB(){
+    public AccountingDB() {
 
         accounting = new HashMap<>();
 
@@ -24,9 +27,10 @@ public class AccountingDB {
 
     /**
      * Saves the specified sale to the accounting database
-     * @param saleDTO The specific sale to save to the database
+     * 
+     * @param saleDTO The specific saleDTO to save to the database
      */
-    public void saveSale(SaleDTO saleDTO){
+    public void saveSale(SaleDTO saleDTO) {
 
         LocalDateTime dateTime = LocalDateTime.now();
         RecordDTO recordDTO = new RecordDTO(saleDTO, dateTime);

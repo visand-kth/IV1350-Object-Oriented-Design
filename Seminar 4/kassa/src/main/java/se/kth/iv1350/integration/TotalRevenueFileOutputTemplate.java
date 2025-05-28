@@ -7,24 +7,30 @@ import java.util.Scanner;
 
 import se.kth.iv1350.model.TotalRevenueObserverTemplate;
 
-public class TotalRevenueFileOutputTemplate extends TotalRevenueObserverTemplate{
-    
+/**
+ * An observer that writes total revenue to a file: "totalRevenue.txt"
+ * 
+ * @author Viktor Sandström
+ * @author Adrian Boström
+ */
+public class TotalRevenueFileOutputTemplate extends TotalRevenueObserverTemplate {
+
     private float totalRevenue = 0;
 
     @Override
-    protected void calculateTotalIncome(float addSalePrice){
+    protected void calculateTotalIncome(float addSalePrice) {
 
         totalRevenue += addSalePrice;
-        
-        try{
+
+        try {
             writeFile();
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("[OBSERVER (TEMPLATE)] Could not write file");
         }
 
     }
 
-    private void writeFile() throws IOException{
+    private void writeFile() throws IOException {
 
         File file = new File("totalRevenueTemplate.txt");
         file.delete();
@@ -36,14 +42,14 @@ public class TotalRevenueFileOutputTemplate extends TotalRevenueObserverTemplate
     }
 
     @Override
-    protected void doShowTotalIncome() throws Exception{
+    protected void doShowTotalIncome() throws Exception {
 
         File file = new File("totalRevenueTemplate.txt");
         Scanner scanner = null;
 
         scanner = new Scanner(file);
-        
-        if(!scanner.hasNextLine())
+
+        if (!scanner.hasNextLine())
             System.out.println("[OBSERVER (TEMPLATE)] No revenue in file");
 
         String fileContent = scanner.nextLine();
@@ -54,7 +60,7 @@ public class TotalRevenueFileOutputTemplate extends TotalRevenueObserverTemplate
     }
 
     @Override
-    protected void handleErrors(Exception e){
+    protected void handleErrors(Exception e) {
 
         System.out.println("[OBSERVER (TEMPLATE)] TotalRevenueView was not able to register revenue");
 

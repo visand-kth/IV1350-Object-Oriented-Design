@@ -1,5 +1,11 @@
 package se.kth.iv1350.integration;
 
+/**
+ * Thrown when no connection can be established
+ * 
+ * @author Viktor Sandström
+ * @author Adrian Boström
+ */
 public class NoConnectionException extends Exception {
 
 	/**

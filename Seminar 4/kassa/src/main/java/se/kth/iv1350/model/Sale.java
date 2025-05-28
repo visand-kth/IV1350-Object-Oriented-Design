@@ -7,8 +7,10 @@ import se.kth.iv1350.DTO.InventoryDTO;
 import se.kth.iv1350.DTO.SaleDTO;
 
 /**
- * Handles an sale with @link Item and @link payment
- * Creates an @link receipt
+ * Handles an sale with @link Item and payments
+ * 
+ * @author Viktor Sandström
+ * @author Adrian Boström
  */
 public class Sale {
 
@@ -101,7 +103,7 @@ public class Sale {
     /**
      * Checks for duplicate item in the current sale
      * 
-     * @param item The item to compare
+     * @param newItem The item to compare
      * @return The item match of the current sale
      */
     public Item checkDuplicate(Item newItem) {
@@ -124,7 +126,7 @@ public class Sale {
     /**
      * Enter amount payed into the sale
      * 
-     * @param amount
+     * @param amount Amount paid to the sale
      */
     public void enterPayment(float amount) {
 

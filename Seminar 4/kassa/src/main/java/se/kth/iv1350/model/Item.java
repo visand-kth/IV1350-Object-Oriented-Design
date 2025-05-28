@@ -4,6 +4,9 @@ import se.kth.iv1350.DTO.ItemDTO;
 
 /**
  * Handles the items from the @link InventoryDB
+ * 
+ * @author Viktor Sandström
+ * @author Adrian Boström
  */
 public class Item {
 
@@ -13,7 +16,8 @@ public class Item {
     /**
      * Constructor for @link Item
      * 
-     * @param price The cost of the @link Item
+     * @param itemDTO The DTO describing the item
+     * @param amount  The cost of the @link Item
      */
     public Item(ItemDTO itemDTO, int amount) {
 
@@ -43,9 +47,10 @@ public class Item {
         return amount;
 
     }
-    
+
     /**
      * Setter to the variable amount
+     * 
      * @param value The value that the variable amount is set to
      */
     public void setAmount(int value) {

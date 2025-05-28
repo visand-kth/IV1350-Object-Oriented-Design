@@ -14,7 +14,10 @@ import se.kth.iv1350.model.Item;
 import se.kth.iv1350.model.Sale;
 
 /**
- * Controlling the interactions
+ * Controlling the interactions between components and devices
+ * 
+ * @author Viktor Sandström
+ * @author Adrian Boström
  */
 public class Controller {
 
@@ -50,8 +53,12 @@ public class Controller {
      * 
      * @param itemID   The item to be added
      * @param quantity The amount of the specified @link itemID items to add
-     * @throws InvalidItemIDException This exception is triggered when the itemID was not found in the database
-     * @throws NoConnectionException This exception is triggered when there is no connection to the database (in this case itemID = 0)
+     * @return Returns an ItemDTO from the @link Item that was added
+     * @throws InvalidItemIDException This exception is triggered when the itemID
+     *                                was not found in the database
+     * @throws NoConnectionException  This exception is triggered when there is no
+     *                                connection to the database (in this case
+     *                                itemID = 0)
      */
     public ItemDTO addItem(int itemID, int quantity) throws InvalidItemIDException, NoConnectionException {
 
@@ -80,6 +87,8 @@ public class Controller {
 
     /**
      * Terminates the sale and shows total price
+     * 
+     * @return Returns an @link SaleDTO of the ended sale
      */
     public SaleDTO endSale() {
 
@@ -117,8 +126,11 @@ public class Controller {
      * Requests discount for an customer with their specific ID
      * 
      * @param userID The customerID that is searched for
-     * @throws InvalidCustomerIDException This exception is triggered when the customerID was not found in the database
-     * @throws NoConnectionException This exception is triggered when there is no connection to the database (in this case userID = 0)
+     * @throws InvalidCustomerIDException This exception is triggered when the
+     *                                    customerID was not found in the database
+     * @throws NoConnectionException      This exception is triggered when there is
+     *                                    no connection to the database (in this
+     *                                    case userID = 0)
      */
     public void requestDiscount(int userID) throws InvalidCustomerIDException, NoConnectionException {
 

@@ -6,6 +6,9 @@ import se.kth.iv1350.DTO.SaleDTO;
 
 /**
  * The discount database that provides the discounts to the @link Controller
+ * 
+ * @author Viktor Sandström
+ * @author Adrian Boström
  */
 public class DiscountDB {
 
@@ -48,12 +51,15 @@ public class DiscountDB {
      * @param userID The customer ID
      * @return Returns the discount for the specific customer if such discount
      *         exists
-     * @throws InvalidCustomerIDException This exception is triggered when the customerID was not found in the database
-     * @throws NoConnectionException This exception is triggered when there is no connection to the database (in this case userID = 0)
+     * @throws InvalidCustomerIDException This exception is triggered when the
+     *                                    customerID was not found in the database
+     * @throws NoConnectionException      This exception is triggered when there is
+     *                                    no connection to the database (in this
+     *                                    case userID = 0)
      */
     public float checkCustomerDiscount(int userID) throws InvalidCustomerIDException, NoConnectionException {
 
-        if(userID == 0)
+        if (userID == 0)
             throw new NoConnectionException("No connection to the discountDB");
 
         if (discounts.containsKey(userID))
@@ -87,12 +93,13 @@ public class DiscountDB {
     /**
      * Searches for the total discounts of an sale with the specified userID
      * 
-     * @param userID The ID of the customer
+     * @param userID  The ID of the customer
      * @param saleDTO The current saleDTO
      * @return Returns the total price to be reduced from the sale with all
      *         discounts
      */
-    public float checkTotalDiscount(int userID, SaleDTO saleDTO) throws InvalidCustomerIDException, NoConnectionException{
+    public float checkTotalDiscount(int userID, SaleDTO saleDTO)
+            throws InvalidCustomerIDException, NoConnectionException {
 
         float price = 1;
 

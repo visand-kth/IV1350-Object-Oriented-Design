@@ -9,6 +9,9 @@ import se.kth.iv1350.DTO.SaleDTO;
 
 /**
  * Provides @link Item to the @link Controller
+ * 
+ * @author Viktor Sandström
+ * @author Adrian Boström
  */
 public class InventoryDB {
 
@@ -29,8 +32,11 @@ public class InventoryDB {
      * 
      * @param itemID Used for the item search
      * @return Returns the @link ItemDTO that corresponds to the itemID
-     * @throws InvalidItemIDException This exception is triggered when the itemID was not found in the database
-     * @throws NoConnectionException This exception is triggered when there is no connection to the database (in this case itemID = 0)
+     * @throws InvalidItemIDException This exception is triggered when the itemID
+     *                                was not found in the database
+     * @throws NoConnectionException  This exception is triggered when there is no
+     *                                connection to the database (in this case
+     *                                itemID = 0)
      */
     public ItemDTO getItemDTO(int itemID) throws InvalidItemIDException, NoConnectionException {
 
@@ -38,7 +44,7 @@ public class InventoryDB {
 
             ItemDTO itemDTO = inventoryDTO.itemDTO();
 
-            if(itemDTO == null)
+            if (itemDTO == null)
                 continue;
 
             if (itemDTO.id() == itemID)
@@ -55,17 +61,18 @@ public class InventoryDB {
 
     /**
      * Takes a sale and reduces the inventory with the items from the sale
+     * (This should be connected to an external system, but this is roughly how such
+     * system could look like)
      * 
-     * @param sale
+     * @param saleDTO The @link SaleDTO that shall reduce the inventory with its
+     *                items
      */
-    public void updateInventory(SaleDTO saleDTO){
-
-        // contact external system
+    public void updateInventory(SaleDTO saleDTO) {
 
         List<InventoryDTO> items = saleDTO.items();
         int itemCount = items.size();
 
-        for(int i = 0; i < itemCount; i++){
+        for (int i = 0; i < itemCount; i++) {
 
             InventoryDTO inventoryDTO = items.get(i);
             updateItem(inventoryDTO);
@@ -74,13 +81,13 @@ public class InventoryDB {
 
     }
 
-    private void updateItem(InventoryDTO inventoryDTO){
+    private void updateItem(InventoryDTO inventoryDTO) {
 
-        for(int i = 0; i < inventory.size(); i++){
+        for (int i = 0; i < inventory.size(); i++) {
 
             InventoryDTO inventoryItem = inventory.get(i);
 
-            if(inventoryItem.itemDTO() == inventoryDTO.itemDTO()){
+            if (inventoryItem.itemDTO() == inventoryDTO.itemDTO()) {
 
                 int newAmount = inventoryItem.count() - inventoryDTO.count();
                 inventoryItem = new InventoryDTO(inventoryItem.itemDTO(), newAmount);
@@ -92,7 +99,7 @@ public class InventoryDB {
 
     }
 
-    private void addItemToInventory(InventoryDTO inventoryDTO){
+    private void addItemToInventory(InventoryDTO inventoryDTO) {
 
         inventory.add(inventoryDTO);
 
@@ -101,8 +108,10 @@ public class InventoryDB {
     private void setUpInventory() {
 
         addItemToInventory(new InventoryDTO(new ItemDTO(100, "TEST ITEM", 0F, 0F, "TEST ITEM"), 99));
-        addItemToInventory(new InventoryDTO(new ItemDTO(101, "BigWheel Oatmeal", 29.9F, 0.06F, "BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free"), 99));
-        addItemToInventory(new InventoryDTO(new ItemDTO(102, "YouGoGo Blueberry", 14.9F, 0.06F, "YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour."), 99));
+        addItemToInventory(new InventoryDTO(new ItemDTO(101, "BigWheel Oatmeal", 29.9F, 0.06F,
+                "BigWheel Oatmeal 500 g, whole grain oats, 7 high fiber, gluten free"), 99));
+        addItemToInventory(new InventoryDTO(new ItemDTO(102, "YouGoGo Blueberry", 14.9F, 0.06F,
+                "YouGoGo Blueberry 240g, low sugar yoghurt, blueberry flavour."), 99));
 
     }
 

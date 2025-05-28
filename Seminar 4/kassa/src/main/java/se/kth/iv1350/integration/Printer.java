@@ -10,20 +10,26 @@ import se.kth.iv1350.DTO.SaleDTO;
 
 /**
  * Prints an receipt of an @link Sale on an external printer
+ * 
+ * @author Viktor Sandström
+ * @author Adrian Boström
  */
 public class Printer {
-    
+
     /**
      * Constructor for @link Receipt
      */
-    public Printer(){
+    public Printer() {
 
     }
 
     /**
-     * Prints the @link Receipt in the printer
+     * Creates and prints a receipt on the physical machine.
+     * 
+     * @param saleDTO The saleDTO to be printed
+     * @param payment How much was paid to this sale
      */
-    public void print(SaleDTO saleDTO, float payment){
+    public void print(SaleDTO saleDTO, float payment) {
 
         int saleLength = saleDTO.items().size();
         System.out.println("------------------ Begin receipt -------------------");
@@ -32,18 +38,19 @@ public class Printer {
         System.out.println(String.format("Time of Sale: %s\n\n", time));
         List<InventoryDTO> saleItems = saleDTO.items();
 
-        for(int i = 0; i < saleLength; i++){
+        for (int i = 0; i < saleLength; i++) {
 
             InventoryDTO saleItem = saleItems.get(i);
             ItemDTO itemDTO = saleItem.itemDTO();
             int itemCount = saleItem.count();
-            System.out.println(String.format("%s\t%d x %.2f\t%.2f SEK", itemDTO.name(), itemCount, itemDTO.getTotalPrice(), itemDTO.getTotalPrice() * itemCount));
+            System.out.println(String.format("%s\t%d x %.2f\t%.2f SEK", itemDTO.name(), itemCount,
+                    itemDTO.getTotalPrice(), itemDTO.getTotalPrice() * itemCount));
 
         }
-        
+
         System.out.println(String.format("\nTotal: \t\t\t\t\t%.2f SEK", saleDTO.totalPrice()));
         System.out.println(String.format("VAT: %.2f", saleDTO.totalVAT()));
-        if(saleDTO.priceReduction() > 0)
+        if (saleDTO.priceReduction() > 0)
             System.out.println(String.format("Discount: \t\t\t\t-%.2f SEK", saleDTO.priceReduction()));
         float priceToPay = saleDTO.totalPrice() - saleDTO.priceReduction();
         System.out.println(String.format("Final: \t\t\t\t\t%.2f SEK", priceToPay));

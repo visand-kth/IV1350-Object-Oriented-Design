@@ -6,24 +6,35 @@ import java.io.IOException;
 
 import se.kth.iv1350.model.TotalRevenueObserver;
 
-public class TotalRevenueFileOutput implements TotalRevenueObserver{
-    
+/**
+ * An observer that writes total revenue to a file: "totalRevenue.txt"
+ * 
+ * @author Viktor Sandström
+ * @author Adrian Boström
+ */
+public class TotalRevenueFileOutput implements TotalRevenueObserver {
+
     private float totalRevenue = 0;
 
+    /**
+     * Adds revenue to the observer to register
+     * 
+     * @param revenue Revenue to be added
+     */
     @Override
-    public void addSale(float revenue){
+    public void addSale(float revenue) {
 
         totalRevenue += revenue;
 
-        try{
+        try {
             writeFile();
-        } catch(Exception e){
+        } catch (Exception e) {
             System.out.println("[OBSERVER] Could not write file");
         }
 
     }
 
-    private void writeFile() throws IOException{
+    private void writeFile() throws IOException {
 
         File file = new File("totalRevenue.txt");
         file.delete();
@@ -31,7 +42,7 @@ public class TotalRevenueFileOutput implements TotalRevenueObserver{
         FileWriter newFile = new FileWriter("totalRevenue.txt");
         newFile.write(String.format("Total revenue: %.2f SEK", totalRevenue));
         newFile.close();
-        
+
     }
 
 }
