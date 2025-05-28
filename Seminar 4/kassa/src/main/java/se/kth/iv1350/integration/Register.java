@@ -8,7 +8,7 @@ package se.kth.iv1350.integration;
  */
 public class Register {
 
-    float currentAmount;
+    private float currentAmount;
 
     /**
      * Constructor for @link Register
