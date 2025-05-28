@@ -72,7 +72,7 @@
 * Low coupling
 * Good encapsulation
 <!-- * Well-defined public interface -->
-* Unit tests for all classes in layers controller, model and integration that do not only contain getters, constructors, values or only print
+<!-- * Unit tests for all classes in layers controller, model and integration that do not only contain getters, constructors, values or only print -->
 
 #### Report
 
@@ -92,10 +92,6 @@
 
 ### Seminar 4
 
-#### Feedback
-
-* Tests that test exceptions actually work
-
 #### Task
 
 <!-- * Use exceptions to handle alternative flow 3-4a -->
@@ -111,7 +107,7 @@
 <!-- * An object shall not change state if an exception is thrown -->
 <!-- * Notify users -->
 <!-- * Notify developers -->
-* Write unit tests for the exception handling
+<!-- * Write unit tests for the exception handling -->
 <!-- * The program shall produce the following output: -->
  <!-- * User interface shall show an informative message when an exception is caught in the view -->
  <!-- * An error report shall be written to a log (file) when an exception is caught -->
@@ -152,6 +148,7 @@
 
 <!-- #### Seminar 4 Feedback -->
 
+<!-- * Tests that test exceptions actually work -->
 <!-- * Check all requirements -->
 <!-- * Check all javadoc -->
 <!-- * Do not catch errors to throw another error -->
