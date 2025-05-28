@@ -83,7 +83,7 @@ public class Controller {
      */
     public SaleDTO endSale() {
 
-        // accountingDB.saveSale(sale.getSaleDTO());
+        accountingDB.saveSale(sale.getSaleDTO());
         return sale.getSaleDTO();
 
     }
