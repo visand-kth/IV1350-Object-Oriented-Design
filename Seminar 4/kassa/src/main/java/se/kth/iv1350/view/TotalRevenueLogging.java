@@ -9,7 +9,22 @@ public class TotalRevenueLogging implements TotalRevenueObserver {
 
     @Override
     public void newSale(double revenue) {
-        writeTotalRevenue(revenue);
+        double totalRevenue = readTotalRevenue();
+        totalRevenue += revenue;
+        writeTotalRevenue(totalRevenue);
+    }
+
+    private double readTotalRevenue() {
+        double total = 0.0;
+        try (BufferedReader reader = new BufferedReader(new FileReader(LOG_FILE))) {
+            String line = reader.readLine();
+            if (line != null) {
+                total = Double.parseDouble(line.trim());
+            }
+        } catch (IOException | NumberFormatException e) {
+            // If file does not exist or is invalid, start from 0
+        }
+        return total;
     }
 
     private void writeTotalRevenue(double totalRevenue) {
