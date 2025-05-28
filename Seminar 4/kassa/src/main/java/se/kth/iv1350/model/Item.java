@@ -23,7 +23,7 @@ public class Item {
         
     }
     /**
-     * Constructor for Item, default amount is 1, if not specified
+     * Constructor for Item, default amount is 1
      * @param itemDTO ItemDTO object containing the item information
      */
     public Item(ItemDTO itemDTO) {
@@ -33,14 +33,14 @@ public class Item {
     }
 
     /**
-     * adds to the amount of the item
+     * Getter for the variable itemDTO
      * 
-     * @return Returns the new amount of the item
+     * @return Returns the value of itemDTO
      */
-    public int addItem(int amount) {
+    public void addItem(int amount) {
 
         this.amount += amount;
-        return this.amount;
+
     }
     
     /**
@@ -57,10 +57,21 @@ public class Item {
     /**
      * Getter for the variable itemDTO
      * 
-     * @return Returns the itemDTO
+     * @return Returns the value of itemDTO
      */
     public ItemDTO getItemDTO() {
         return itemDTO;
+    }
+
+    /**
+     * Prints the item to the console
+     */
+    public void print() {
+
+        System.out.println("Item: " + itemDTO.getName() + "\n" +
+                "Price: " + itemDTO.getPrice() + "\n" +
+                "Amount: " + amount + "\n" +
+                "Total price: " + itemDTO.getTotalPrice() + "\n");
     }
 
 }
