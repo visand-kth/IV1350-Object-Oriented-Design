@@ -93,20 +93,19 @@ public class DiscountDB {
     /**
      * Searches for the total discounts of an sale with the specified userID
      * 
-     * @param userID  The ID of the customer
      * @param saleDTO The current saleDTO
      * @return Returns the total price to be reduced from the sale with all
      *         discounts
      */
-    public float checkTotalDiscount(int userID, SaleDTO saleDTO)
+    public float checkTotalDiscount(SaleDTO saleDTO)
             throws InvalidCustomerIDException, NoConnectionException {
 
         float price = 1;
 
         price *= 1 - checkPriceDiscount(saleDTO);
-        price *= 1 - checkCustomerDiscount(userID);
+        price *= 1 - checkCustomerDiscount(saleDTO.customerID());
 
-        return saleDTO.totalPrice() * (1 - price);
+        return saleDTO.totalPrice() * price;
 
     }
 

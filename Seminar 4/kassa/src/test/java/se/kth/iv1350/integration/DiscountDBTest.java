@@ -1,9 +1,14 @@
 package se.kth.iv1350.integration;
 
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import se.kth.iv1350.DTO.SaleDTO;
 
 public class DiscountDBTest {
     
@@ -19,26 +24,85 @@ public class DiscountDBTest {
     @Test
     public void testAddDiscount(){
 
-        float expected = 0.19F;
-        discountDB.addDiscount(1, expected);
-        float result = 0;
         try{
-            result = discountDB.checkCustomerDiscount(1);
+            float expected = 0.19F;
+            discountDB.addDiscount(1, expected);
+            float result = discountDB.checkCustomerDiscount(1);
+            assertTrue(expected == result, "Did not find the new discount");
         } catch (Exception e){
-            fail(e.getMessage());
+            fail("Exception thrown");
         }
-        assertTrue(expected == result, "Did not find the new discount");
 
     }
 
     @Test
-    public void testAddDiscountException(){
+    public void testCheckInvalidCustomerIDException(){
+
+        try{
+            discountDB.checkCustomerDiscount(101);
+            fail("Exception was not thrown");
+        } catch (InvalidCustomerIDException e){
+            assertTrue(true);
+        } catch (Exception e){
+            fail("Wrong exception thrown");
+        }
+
+    }
+
+    @Test
+    public void testCheckNoConnectionException(){
 
         try{
             discountDB.checkCustomerDiscount(0);
             fail("Exception was not thrown");
+        } catch (NoConnectionException e){
+            assertTrue(true);
         } catch (Exception e){
-            assertTrue(true, "Exception thrown when tested for discount");
+            fail("Wrong exception thrown");
+        }
+
+    }
+
+    @Test
+    public void testCheckTotalInvalidCustomerIDException(){
+
+        try{
+            discountDB.checkTotalDiscount(new SaleDTO(new ArrayList<>(), 0, 0, 0, 101));
+            fail("Exception was not thrown");
+        } catch (InvalidCustomerIDException e){
+            assertTrue(true);
+        } catch (Exception e){
+            fail("Wrong exception thrown");
+        }
+
+    }
+
+    @Test
+    public void testCheckTotalNoConnectionException(){
+
+        try{
+            discountDB.checkTotalDiscount(new SaleDTO(new ArrayList<>(), 0, 0, 0, 0));
+            fail("Exception was not thrown");
+        } catch (NoConnectionException e){
+            assertTrue(true);
+        } catch (Exception e){
+            fail("Wrong exception thrown");
+        }
+
+    }
+
+    @Test
+    public void testCheckTotal(){
+
+        try{
+            float expected = 600 * 0.9f * 0.95f;
+            float result = discountDB.checkTotalDiscount(new SaleDTO(new ArrayList<>(), 600, 0, 0, 201));
+            if(expected != result) fail("Result did not match expected value");
+            expected = 1600 * 0.9f * 0.9f;
+            result = discountDB.checkTotalDiscount(new SaleDTO(new ArrayList<>(), 1600, 0, 0, 201));
+            assertEquals(expected, result, 0.1f, "Result did not match expected value");
+        } catch (Exception e){
+            fail("Exception thrown");
         }
 
     }

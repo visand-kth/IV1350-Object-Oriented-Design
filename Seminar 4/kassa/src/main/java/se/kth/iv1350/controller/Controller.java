@@ -135,7 +135,7 @@ public class Controller {
     public void requestDiscount(int userID) throws InvalidCustomerIDException, NoConnectionException {
 
         sale.setCustomerID(userID);
-        sale.setDiscount(discountDB.checkTotalDiscount(userID, sale.getSaleDTO()));
+        sale.setDiscount(discountDB.checkTotalDiscount(sale.getSaleDTO()));
 
     }
 
