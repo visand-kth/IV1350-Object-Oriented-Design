@@ -137,7 +137,7 @@
 
 ### Task 2, Inheritance vs Composition
 
-<!-- IDEA: https://www.youtube.cofm/watch?v=hxGOiiR9ZKg -->
+<!-- IDEA: https://www.youtube.com/watch?v=hxGOiiR9ZKg -->
 
 * adapt any class in the java libraries from Oracle
 * Write one new class that adapts using inheritance, and another new class that adapts using composition
