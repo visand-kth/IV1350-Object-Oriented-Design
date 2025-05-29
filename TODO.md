@@ -115,9 +115,9 @@
  <!-- * TotalRevenueView -->
  <!-- * TotalRevenueFileOutput -->
  <!-- * Shall never call the controller or any other class, update instead using the Observer pattern -->
-* Use two more GoF patterns apart from Observer and Template method
-    * Suggestion is to turn some registry/database into singleton or use Strategy (maybe also Composite) for discount calculation
-    * Not allowed to copy entire files or classes from code samples written at the lectures
+<!-- * Use two more GoF patterns apart from Observer and Template method -->
+ <!-- * Suggestion is to turn some registry/database into singleton or use Strategy (maybe also Composite) for discount calculation -->
+ <!-- * Not allowed to copy entire files or classes from code samples written at the lectures -->
 
 #### Report
 
