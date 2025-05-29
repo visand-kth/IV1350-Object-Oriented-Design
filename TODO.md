@@ -55,7 +55,7 @@
 
 ### Seminar 3
 
-#### Task
+<!-- #### Task -->
 
 <!-- * Apply several best practices of object-oriented programming -->
 <!-- * Write a program implementing the basic flow, the startup scenario, and the alternative flow 3-4b which was designed in seminar 2 (class diagram and communication diagram) -->
@@ -66,11 +66,11 @@
 <!-- * Compilable and executable -->
 <!-- * Program in Java -->
 <!-- * No exceptions -->
-* Follow all guidelines in chapter six in the textbook
+<!-- * Follow all guidelines in chapter six in the textbook -->
 <!-- * Try to follow the design from seminar two -->
-* High cohesion
-* Low coupling
-* Good encapsulation
+<!-- * High cohesion -->
+<!-- * Low coupling -->
+<!-- * Good encapsulation -->
 <!-- * Well-defined public interface -->
 <!-- * Unit tests for all classes in layers controller, model and integration that do not only contain getters, constructors, values or only print -->
 
@@ -92,14 +92,14 @@
 
 ### Seminar 4
 
-#### Task
+<!-- #### Task -->
 
 <!-- * Use exceptions to handle alternative flow 3-4a -->
  <!-- * Exceptions shall be thrown to indicate that a search as been made for an identifier that did not exist in the inventory catalog -->
 <!-- * Use exceptions to indicate that the database can not be called -->
  <!-- * Simulate this situation by always throwing a database failure when a search is made for a particular, hardcoded item identifier -->
-* Choose between checked and unchecked exceptions
-* Use the correct abstraction level for exceptions
+<!-- * Choose between checked and unchecked exceptions -->
+<!-- * Use the correct abstraction level for exceptions -->
 <!-- * Name the exception after the error condition -->
 <!-- * Include information about the error condition -->
 <!-- * Use functionality provided in java.lang.Exception -->
@@ -139,10 +139,10 @@
 
 <!-- IDEA: https://www.youtube.com/watch?v=hxGOiiR9ZKg -->
 
-* adapt any class in the java libraries from Oracle
+* Adapt any class in the java libraries from Oracle
 * Write one new class that adapts using inheritance, and another new class that adapts using composition
-* write a main method which instantiates your new classes and executes the adaptions
-* must include printouts illustrating how your classes work
+* Write a main method which instantiates your new classes and executes the adaptions
+* Must include printouts illustrating how your classes work
 
 <!-- ### History -->
 
@@ -174,6 +174,11 @@
 <!-- * Are observers allowed to break the layers? (The integration and view observers interact with model abstract/interface) - yeah kinda -->
 <!-- * Instantiate the classes implementing the observer interface in the observed class - create observers in view -->
 <!-- * Task 1 abstract or interface - needed interface in abstract -->
+<!-- * What are checked exceptions - checked under compilation, custom exceptions (unlike dividing with 0 that are low level) -->
+<!-- * What are abstraction levels for exceptions - where are exceptions thrown and catched in the program, our instance: everything catched in view -->
+<!-- * What is high cohesion - classes and functions are specialized and do one thing great unlike multitasking -->
+<!-- * What is low coupling - low amount of connections to other components, a change in one class does not mean all other classes need change -->
+<!-- * What is good encapsulation - hide the unimportant tech stuff for the more important solution and greater readability -->
 
 <!-- #### Notes from TA -->
 
