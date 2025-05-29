@@ -2,20 +2,31 @@ package se.kth.iv1350.integration;
 
 /**
  * The register that keeps track of the amount of money
+ * This is implemented using the singleton strategy by the GoF
  * 
  * @author Viktor Sandström
  * @author Adrian Boström
  */
 public class Register {
 
+    private static Register instance;
     private float currentAmount;
 
     /**
      * Constructor for @link Register
      */
-    public Register() {
+    private Register() {
 
         currentAmount = 0;
+
+    }
+
+    public static Register getRegisterInstance(){
+
+        if(instance == null)
+            instance = new Register();
+
+        return instance;
 
     }
 

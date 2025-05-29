@@ -35,7 +35,7 @@ public class Controller {
         accountingDB = new AccountingDB();
         discountDB = new DiscountDB();
         inventoryDB = new InventoryDB();
-        register = new Register();
+        register = Register.getRegisterInstance();
 
     }
 
