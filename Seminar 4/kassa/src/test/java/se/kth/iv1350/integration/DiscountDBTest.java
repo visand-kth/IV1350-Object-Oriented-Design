@@ -27,38 +27,11 @@ public class DiscountDBTest {
         try{
             float expected = 0.19F;
             discountDB.addDiscount(1, expected);
-            float result = discountDB.checkCustomerDiscount(1);
-            assertTrue(expected == result, "Did not find the new discount");
+            SaleDTO saleDTO = new SaleDTO(new ArrayList<>(), 1, 0, 0, 1);
+            float result = 1 - discountDB.checkTotalDiscount(saleDTO);
+            assertEquals(expected, result, 0.01f, "Did not find the new discount");
         } catch (Exception e){
             fail("Exception thrown");
-        }
-
-    }
-
-    @Test
-    public void testCheckInvalidCustomerIDException(){
-
-        try{
-            discountDB.checkCustomerDiscount(101);
-            fail("Exception was not thrown");
-        } catch (InvalidCustomerIDException e){
-            assertTrue(true);
-        } catch (Exception e){
-            fail("Wrong exception thrown");
-        }
-
-    }
-
-    @Test
-    public void testCheckNoConnectionException(){
-
-        try{
-            discountDB.checkCustomerDiscount(0);
-            fail("Exception was not thrown");
-        } catch (NoConnectionException e){
-            assertTrue(true);
-        } catch (Exception e){
-            fail("Wrong exception thrown");
         }
 
     }
