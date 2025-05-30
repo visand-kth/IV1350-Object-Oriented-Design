@@ -135,14 +135,69 @@
 * <b>Discussion</b>
     * Evaluate your program using applicable assessment criteria from the document <i>assessment-criteria-seminar4.pdf</i>
 
+### Task 1, Inheritance
+
+#### Task
+
+* Use the Template Method design pattern for new observers
+* The template class you create must have the structure of the pseudocode
+
+#### Report
+
+* <b>Method</b>
+    * Explain how you worked and how you reasoned when implementing the template method pattern
+* <b>Result</b>
+    * Briefly explain source code
+    * Link to repo
+    * Sample run
+* <b>Discussion</b>
+    * Thoroughly motivate that your code is a correct implementation of the template method pattern
+    * Thoroughly explain the benefits of using template method in your application
+
 ### Task 2, Inheritance vs Composition
 
 <!-- IDEA: https://www.youtube.com/watch?v=hxGOiiR9ZKg -->
 
-* Adapt any class in the java libraries from Oracle
-* Write one new class that adapts using inheritance, and another new class that adapts using composition
-* Write a main method which instantiates your new classes and executes the adaptions
-* Must include printouts illustrating how your classes work
+<!-- #### Task -->
+
+<!-- * Adapt any class in the java libraries from Oracle -->
+<!-- * Write one new class that adapts using inheritance, and another new class that adapts using composition -->
+<!-- * Write a main method which instantiates your new classes and executes the adaptions -->
+<!-- * Must include printouts illustrating how your classes work -->
+
+#### Report
+
+* <b>Method</b>
+    * Explain how you worked and how you reasoned when writing the adapting classes
+* <b>Result</b>
+    * Briefly explain the source code
+    * Link to repo
+    * Sample run
+* <b>Discussion</b>
+    * Thoroughly compare adaption using inheritance vs composition
+    * There are comparison criteria in section 9.3 in the course book
+    * Draw a conclusion which is best: inheritance, composition or neither
+
+### Task 3, Testing Output
+
+#### Task
+
+* Write unit tests for all methods that print to System.out
+    * Must include at least the main method, the View class and the receipt printout
+    * If you have additional methods printing to System.out, also those must be tested
+    * The tests of the View class must test all printouts in that class, but you only have to test printout containing information
+    * It’s not required to test printouts which exist only to make the view more readable
+
+#### Report
+
+* <b>Method</b>
+    * Explain how you worked and how you reasoned when writing the unit tests
+* <b>Result</b>
+    * Briefly explain the source code
+    * Link to repo
+    * Sample run
+* <b>Discussion</b>
+    * Thoroughly evaluate your unit tests using assessment criteria related to testing from the document <i>assessment-criteria-seminar3.pdf</i>
 
 <!-- ### History -->
 
