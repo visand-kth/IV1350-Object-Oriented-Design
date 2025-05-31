@@ -94,6 +94,7 @@
 
 <!-- #### Task -->
 
+<!-- * When passed a list of all bought items, it tells a sum to be reduced from the total cost of the entire sale. The sum is zero if there’s no discount -->
 <!-- * Use exceptions to handle alternative flow 3-4a -->
  <!-- * Exceptions shall be thrown to indicate that a search as been made for an identifier that did not exist in the inventory catalog -->
 <!-- * Use exceptions to indicate that the database can not be called -->
