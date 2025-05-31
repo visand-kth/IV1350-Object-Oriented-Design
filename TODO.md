@@ -27,20 +27,20 @@
 
 ### Seminar 2
 
-#### Task
+<!-- #### Task -->
 
-* Use cohesion, coupling and encapsulation to design an object-oriented program
-* Design a program with requirements:
-    * Can handle all parts of the flow
-    * Include startup
-    * High cohesion
-    * Low coupling
-    * Good encapsulation
-    * Well-designed public interface
-    * Divided into layers, specified by MVC and Layer patterns
-    * Not required to follow the DM and SSD
-    * Not required to design the view, replace with a class called View
-    * Not required to design the data layer
+<!-- * Use cohesion, coupling and encapsulation to design an object-oriented program -->
+<!-- * Design a program with requirements: -->
+ <!-- * Can handle all parts of the flow -->
+ <!-- * Include startup -->
+ <!-- * High cohesion -->
+ <!-- * Low coupling -->
+ <!-- * Good encapsulation -->
+ <!-- * Well-designed public interface -->
+ <!-- * Divided into layers, specified by MVC and Layer patterns -->
+ <!-- * Not required to follow the DM and SSD -->
+ <!-- * Not required to design the view, replace with a class called View -->
+ <!-- * Not required to design the data layer -->
 
 #### Report
 
