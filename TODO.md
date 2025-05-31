@@ -4,10 +4,10 @@
 
 #### Task
 
-* Domain model (DM)
-    * basic and alternative flows
-    * business rules and clarifications
-    * no class called program or system
+<!-- * Domain model (DM) -->
+ <!-- * basic and alternative flows -->
+ <!-- * business rules and clarifications -->
+ <!-- * no class called program or system -->
 * System sequence diagram (SSD)
     * Illustrating basic and alternative flows
 
