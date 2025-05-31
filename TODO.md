@@ -8,8 +8,8 @@
  <!-- * basic and alternative flows -->
  <!-- * business rules and clarifications -->
  <!-- * no class called program or system -->
-* System sequence diagram (SSD)
-    * Illustrating basic and alternative flows
+<!-- * System sequence diagram (SSD) -->
+ <!-- * Illustrating basic and alternative flows -->
 
 #### Report
 
