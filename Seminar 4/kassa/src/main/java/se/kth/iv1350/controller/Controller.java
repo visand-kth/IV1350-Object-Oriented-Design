@@ -25,6 +25,7 @@ public class Controller {
     private DiscountDB discountDB;
     private InventoryDB inventoryDB;
     private Register register;
+    private Printer printer;
     private Sale sale;
 
     /**
@@ -36,6 +37,7 @@ public class Controller {
         discountDB = new DiscountDB();
         inventoryDB = new InventoryDB();
         register = Register.getRegisterInstance();
+        printer = new Printer();
 
     }
 
@@ -78,7 +80,6 @@ public class Controller {
 
         sale.enterPayment(amount);
         register.increaseAmount(amount);
-        Printer printer = new Printer();
         printer.print(sale.getSaleDTO(), amount);
         inventoryDB.updateInventory(sale.getSaleDTO());
         sale = null;
