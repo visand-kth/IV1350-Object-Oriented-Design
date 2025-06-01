@@ -1,8 +1,8 @@
 <!-- TODO -->
 
-### Seminar 1
+<!-- ### Seminar 1 -->
 
-#### Task
+<!-- #### Task -->
 
 <!-- * Domain model (DM) -->
  <!-- * basic and alternative flows -->
@@ -11,19 +11,18 @@
 <!-- * System sequence diagram (SSD) -->
  <!-- * Illustrating basic and alternative flows -->
 
-#### Report
+<!-- #### Report -->
 
-* Explain and discuss the result and explain the method
-* <b>Method</b>
-    * Explain how we used a category list and noun identification to identify classes
-    * Explain how we decided on attributes and associations
-    * Explain how we worked when developing the SSD
-* <b>Result</b>
-    * Show and briefly explain the domain model
-    * Show and briefly explain the SSD
-* <b>Discussion</b>
-    * Evaluate your domain model using applicable assessment criteria from <i>assessment-criteria-seminar1.pdf</i>
-    * Evaluate your SSD using applicable assessment criteria from <i>assessment-criteria-seminar1.pdf</i>
+<!-- * Explain and discuss the result and explain the method -->
+<!-- * <b>Method</b> -->
+ <!-- * Explain how we used a category list and noun identification to identify classes -->
+ <!-- * Explain how we decided on attributes and associations -->
+ <!-- * Explain how we worked when developing the SSD -->
+<!-- * <b>Result</b> -->
+ <!-- * Show and briefly explain the domain model -->
+ <!-- * Show and briefly explain the SSD -->
+<!-- * <b>Discussion</b> -->
+ <!-- * Evaluate your domain model and SSD using applicable assessment criteria from <i>assessment-criteria-seminar1.pdf</i> -->
 
 ### Seminar 2
 
