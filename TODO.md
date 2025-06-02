@@ -24,7 +24,7 @@
 <!-- * <b>Discussion</b> -->
  <!-- * Evaluate your domain model and SSD using applicable assessment criteria from <i>assessment-criteria-seminar1.pdf</i> -->
 
-### Seminar 2
+<!-- ### Seminar 2 -->
 
 <!-- #### Task -->
 
@@ -41,18 +41,18 @@
  <!-- * Not required to design the view, replace with a class called View -->
  <!-- * Not required to design the data layer -->
 
-#### Report
+<!-- #### Report -->
 
-* Motivate how cohesion, coupling and encapsulation are used when designing an object-oriented program
-* <b>Method</b>
-    * Explain how you worked and give examples how you reasoned when creating the design
-* <b>Result</b>
-    * Briefly explain interaction diagrams (communication or SSD) describing all functionality of the process sale scenario both basic and alternative flows, also the main method
-    * Briefly explain a class diagram showing all classes in the interaction diagrams
-* <b>Discussion</b>
-    * Evaluate design using applicable assessment criteria from <i>assessment-criteria-seminar2.pdf</i>
+<!-- * Motivate how cohesion, coupling and encapsulation are used when designing an object-oriented program -->
+<!-- * <b>Method</b> -->
+ <!-- * Explain how you worked and give examples how you reasoned when creating the design -->
+<!-- * <b>Result</b> -->
+ <!-- * Briefly explain interaction diagrams (communication or SSD) describing all functionality of the process sale scenario both basic and alternative flows, also the main method -->
+ <!-- * Briefly explain a class diagram showing all classes in the interaction diagrams -->
+<!-- * <b>Discussion</b> -->
+ <!-- * Evaluate design using applicable assessment criteria from <i>assessment-criteria-seminar2.pdf</i> -->
 
-### Seminar 3
+<!-- ### Seminar 3 -->
 
 <!-- #### Task -->
 
@@ -73,23 +73,23 @@
 <!-- * Well-defined public interface -->
 <!-- * Unit tests for all classes in layers controller, model and integration that do not only contain getters, constructors, values or only print -->
 
-#### Report
+<!-- #### Report -->
 
-* Satisfactory explain and motivate the use of best practices of object-oriented programming
-* Prove that you understand how to write and use unit tests
-* <b>Method</b>
-    * Explain how you worked and reasoned with the program
-    * Explain how you worked and reasoned with unit tests
-    * Explain how you chose which tests to write
-* <b>Result</b>
-    * Briefly explain the program
-    * Include link to github
-    * Include printout of sample run
-    * Briefly explain the tests
-* <b>Discussion</b>
-    * Evaluate program using applicable assessment criteria from <i>assessment-criteria-seminar3.pdf</i>
+<!-- * Satisfactory explain and motivate the use of best practices of object-oriented programming -->
+<!-- * Prove that you understand how to write and use unit tests -->
+<!-- * <b>Method</b> -->
+ <!-- * Explain how you worked and reasoned with the program -->
+ <!-- * Explain how you worked and reasoned with unit tests -->
+ <!-- * Explain how you chose which tests to write -->
+<!-- * <b>Result</b> -->
+ <!-- * Briefly explain the program -->
+ <!-- * Include link to github -->
+ <!-- * Include printout of sample run -->
+ <!-- * Briefly explain the tests -->
+<!-- * <b>Discussion</b> -->
+ <!-- * Evaluate program using applicable assessment criteria from <i>assessment-criteria-seminar3.pdf</i> -->
 
-### Seminar 4
+<!-- ### Seminar 4 -->
 
 <!-- #### Task -->
 
@@ -119,42 +119,42 @@
  <!-- * Suggestion is to turn some registry/database into singleton or use Strategy (maybe also Composite) for discount calculation -->
  <!-- * Not allowed to copy entire files or classes from code samples written at the lectures -->
 
-#### Report
+<!-- #### Report -->
 
-* Apply design patterns and explain and motivate their use
-* Prove that you understand how to write and use exceptions for error handling
-* <b>Method</b>
-    * Explain how you worked and reasoned when implementing exception handling
-    * Explain how you worked and reasoned when implementing the observer pattern
-    * Explain how you worked and reasoned when implementing the two more GoF patterns
-* <b>Result</b>
-    * Briefly explain the program
-    * Include link to github
-    * Include printout of a sample run
-    * Briefly explain source code for all classes you changed when implementing the GoF patterns (including Observer)
-* <b>Discussion</b>
-    * Evaluate your program using applicable assessment criteria from the document <i>assessment-criteria-seminar4.pdf</i>
+<!-- * Apply design patterns and explain and motivate their use -->
+<!-- * Prove that you understand how to write and use exceptions for error handling -->
+<!-- * <b>Method</b> -->
+ <!-- * Explain how you worked and reasoned when implementing exception handling -->
+ <!-- * Explain how you worked and reasoned when implementing the observer pattern -->
+ <!-- * Explain how you worked and reasoned when implementing the two more GoF patterns -->
+<!-- * <b>Result</b> -->
+ <!-- * Briefly explain the program -->
+ <!-- * Include link to github -->
+ <!-- * Include printout of a sample run -->
+ <!-- * Briefly explain source code for all classes you changed when implementing the GoF patterns (including Observer) -->
+<!-- * <b>Discussion</b> -->
+ <!-- * Evaluate your program using applicable assessment criteria from the document <i>assessment-criteria-seminar4.pdf</i> -->
 
-### Task 1, Inheritance
+<!-- ### Task 1, Inheritance -->
 
-#### Task
+<!-- #### Task -->
 
-* Use the Template Method design pattern for new observers
-* The template class you create must have the structure of the pseudocode
+<!-- * Use the Template Method design pattern for new observers -->
+<!-- * The template class you create must have the structure of the pseudocode -->
 
-#### Report
+<!-- #### Report -->
 
-* <b>Method</b>
-    * Explain how you worked and how you reasoned when implementing the template method pattern
-* <b>Result</b>
-    * Briefly explain source code
-    * Link to repo
-    * Sample run
-* <b>Discussion</b>
-    * Thoroughly motivate that your code is a correct implementation of the template method pattern
-    * Thoroughly explain the benefits of using template method in your application
+<!-- * <b>Method</b> -->
+ <!-- * Explain how you worked and how you reasoned when implementing the template method pattern -->
+<!-- * <b>Result</b> -->
+ <!-- * Briefly explain source code -->
+ <!-- * Link to repo -->
+ <!-- * Sample run -->
+<!-- * <b>Discussion</b> -->
+ <!-- * Thoroughly motivate that your code is a correct implementation of the template method pattern -->
+ <!-- * Thoroughly explain the benefits of using template method in your application -->
 
-### Task 2, Inheritance vs Composition
+<!-- ### Task 2, Inheritance vs Composition -->
 
 <!-- IDEA: https://www.youtube.com/watch?v=hxGOiiR9ZKg -->
 
@@ -165,39 +165,39 @@
 <!-- * Write a main method which instantiates your new classes and executes the adaptions -->
 <!-- * Must include printouts illustrating how your classes work -->
 
-#### Report
+<!-- #### Report -->
 
-* <b>Method</b>
-    * Explain how you worked and how you reasoned when writing the adapting classes
-* <b>Result</b>
-    * Briefly explain the source code
-    * Link to repo
-    * Sample run
-* <b>Discussion</b>
-    * Thoroughly compare adaption using inheritance vs composition
-    * There are comparison criteria in section 9.3 in the course book
-    * Draw a conclusion which is best: inheritance, composition or neither
+<!-- * <b>Method</b> -->
+ <!-- * Explain how you worked and how you reasoned when writing the adapting classes -->
+<!-- * <b>Result</b> -->
+ <!-- * Briefly explain the source code -->
+ <!-- * Link to repo -->
+ <!-- * Sample run -->
+<!-- * <b>Discussion</b> -->
+ <!-- * Thoroughly compare adaption using inheritance vs composition -->
+ <!-- * There are comparison criteria in section 9.3 in the course book -->
+ <!-- * Draw a conclusion which is best: inheritance, composition or neither -->
 
-### Task 3, Testing Output
+<!-- ### Task 3, Testing Output -->
 
-#### Task
+<!-- #### Task -->
 
-* Write unit tests for all methods that print to System.out
-    * Must include at least the main method, the View class and the receipt printout
-    * If you have additional methods printing to System.out, also those must be tested
-    * The tests of the View class must test all printouts in that class, but you only have to test printout containing information
-    * It’s not required to test printouts which exist only to make the view more readable
+<!-- * Write unit tests for all methods that print to System.out -->
+ <!-- * Must include at least the main method, the View class and the receipt printout -->
+ <!-- * If you have additional methods printing to System.out, also those must be tested -->
+ <!-- * The tests of the View class must test all printouts in that class, but you only have to test printout containing information -->
+ <!-- * It’s not required to test printouts which exist only to make the view more readable -->
 
-#### Report
+<!-- #### Report -->
 
-* <b>Method</b>
-    * Explain how you worked and how you reasoned when writing the unit tests
-* <b>Result</b>
-    * Briefly explain the source code
-    * Link to repo
-    * Sample run
-* <b>Discussion</b>
-    * Thoroughly evaluate your unit tests using assessment criteria related to testing from the document <i>assessment-criteria-seminar3.pdf</i>
+<!-- * <b>Method</b> -->
+ <!-- * Explain how you worked and how you reasoned when writing the unit tests -->
+<!-- * <b>Result</b> -->
+ <!-- * Briefly explain the source code -->
+ <!-- * Link to repo -->
+ <!-- * Sample run -->
+<!-- * <b>Discussion</b> -->
+ <!-- * Thoroughly evaluate your unit tests using assessment criteria related to testing from the document <i>assessment-criteria-seminar3.pdf</i> -->
 
 <!-- ### History -->
 
