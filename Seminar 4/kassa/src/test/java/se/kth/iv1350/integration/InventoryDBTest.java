@@ -28,7 +28,7 @@ public class InventoryDBTest {
             inventoryDB.getItemDTO(1);
             fail("Exception not thrown");
         } catch (InvalidItemIDException e){
-            assertTrue(true);
+            ;
         } catch (Exception e){
             fail("Wrong exception thrown");
         }
@@ -42,7 +42,7 @@ public class InventoryDBTest {
             inventoryDB.getItemDTO(0);
             fail("Exception not thrown");
         } catch (NoConnectionException e){
-            assertTrue(true);
+            ;
         } catch (Exception e){
             fail("Wrong exception thrown");
         }
@@ -67,7 +67,6 @@ public class InventoryDBTest {
         try{
             SaleDTO saleDTO = new SaleDTO(new ArrayList<>(), 0, 0, 0, 0);
             inventoryDB.updateInventory(saleDTO);
-            assertTrue(true);
         } catch (Exception e){
             fail("Exception thrown");
         }

@@ -2,7 +2,6 @@ package se.kth.iv1350.integration;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,7 +24,6 @@ public class AccountingDBTest {
 
         try {
             accountingDB.saveSale(new SaleDTO(new ArrayList<>(), 0, 0, 0, 201));
-            assertTrue(true);
         } catch (Exception e) {
             fail("Exception thrown");
         }

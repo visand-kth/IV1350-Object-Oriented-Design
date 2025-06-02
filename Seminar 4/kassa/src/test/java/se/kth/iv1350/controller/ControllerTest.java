@@ -92,7 +92,7 @@ public class ControllerTest {
             controller.addItem(0,1);
             fail("No exception thrown");
         } catch (NoConnectionException e) {
-            assertTrue(true);
+            ;
         } catch (Exception e){
             fail("Wrong exception thrown");
         }
@@ -137,7 +137,7 @@ public class ControllerTest {
             controller.requestDiscount(101);
             fail("No exception thrown");
         } catch (InvalidCustomerIDException e) {
-            assertTrue(true);
+            ;
         } catch (Exception e){
             fail("Wrong exception thrown");
         }
@@ -152,7 +152,7 @@ public class ControllerTest {
             controller.requestDiscount(0);
             fail("No exception thrown");
         } catch (NoConnectionException e) {
-            assertTrue(true);
+            ;
         } catch (Exception e){
             fail("Wrong exception thrown");
         }

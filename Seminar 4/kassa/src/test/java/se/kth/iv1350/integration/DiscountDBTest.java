@@ -3,7 +3,6 @@ package se.kth.iv1350.integration;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -43,7 +42,7 @@ public class DiscountDBTest {
             discountDB.checkTotalDiscount(new SaleDTO(new ArrayList<>(), 0, 0, 0, 101));
             fail("Exception was not thrown");
         } catch (InvalidCustomerIDException e){
-            assertTrue(true);
+            ;
         } catch (Exception e){
             fail("Wrong exception thrown");
         }
@@ -57,7 +56,7 @@ public class DiscountDBTest {
             discountDB.checkTotalDiscount(new SaleDTO(new ArrayList<>(), 0, 0, 0, 0));
             fail("Exception was not thrown");
         } catch (NoConnectionException e){
-            assertTrue(true);
+            ;
         } catch (Exception e){
             fail("Wrong exception thrown");
         }
