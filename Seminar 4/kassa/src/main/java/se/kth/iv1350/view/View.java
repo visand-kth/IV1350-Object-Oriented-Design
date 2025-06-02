@@ -40,11 +40,13 @@ public class View {
         totalRevenueObservers.add(new TotalRevenueFileOutput());
         totalRevenueObservers.add(new TotalRevenueViewTemplate());
         totalRevenueObservers.add(new TotalRevenueFileOutputTemplate());
-        runUserSimulation();
 
     }
 
-    private void runUserSimulation() {
+    /**
+     * Simulates a actions on the view from a user
+     */
+    public void runUserSimulation() {
 
         startSale();
         addItem(101, 1);

@@ -18,8 +18,13 @@ public class Main {
      */
     public static void main(String[] args) {
 
+        System.out.println("[STARTUP] Starting program");
         Controller controller = new Controller();
-        new View(controller);
+        System.out.println("[STARTUP] Controller started: " + controller);
+        View view = new View(controller);
+        System.out.println("[STARTUP] View started: " + view);
+        System.out.println("[STARTUP] Running user simulation");
+        view.runUserSimulation();
 
     }
 
