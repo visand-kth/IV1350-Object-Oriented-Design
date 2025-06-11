@@ -3,7 +3,6 @@ package se.kth.iv1350.integration;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
 
 import se.kth.iv1350.model.TotalRevenueObserverTemplate;
 
@@ -22,12 +21,6 @@ public class TotalRevenueFileOutputTemplate extends TotalRevenueObserverTemplate
 
         totalRevenue += addSalePrice;
 
-        try {
-            writeFile();
-        } catch (Exception e) {
-            System.out.println("[OBSERVER (TEMPLATE)] Could not write file");
-        }
-
     }
 
     private void writeFile() throws IOException {
@@ -44,25 +37,14 @@ public class TotalRevenueFileOutputTemplate extends TotalRevenueObserverTemplate
     @Override
     protected void doShowTotalIncome() throws Exception {
 
-        File file = new File("totalRevenueTemplate.txt");
-        Scanner scanner = null;
-
-        scanner = new Scanner(file);
-
-        if (!scanner.hasNextLine())
-            System.out.println("[OBSERVER (TEMPLATE)] No revenue in file");
-
-        String fileContent = scanner.nextLine();
-        scanner.close();
-
-        System.out.println("[OBSERVER (TEMPLATE)] " + fileContent);
+        writeFile();
 
     }
 
     @Override
     protected void handleErrors(Exception e) {
 
-        System.out.println("[OBSERVER (TEMPLATE)] TotalRevenueView was not able to register revenue");
+        System.out.println("[OBSERVER (TEMPLATE)] TotalRevenueView was not able to register revenue to file");
 
     }
 
